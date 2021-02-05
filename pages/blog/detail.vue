@@ -243,16 +243,19 @@ export default {
       mate:[
         {
           'hid': 'fb-title',
+          'name': 'og:title',
           'property':  'og:title',
           'content':  `${this.shareTitle}`,
         },
         {
           'hid': 'fb-des',
+          'name': 'og:description',
           'property':  'og:description',
           'content': `${this.shareDes}`,
         },
         {
           'hid': 'fb-img',
+          'name': 'og:image',
           'property':  'og:image',
           'content': `${this.shareImge}`
         }
@@ -260,14 +263,15 @@ export default {
     }
   },
   created() {
-    this.getData(this.$route.query.blogId, function(data) {
+
+  },
+  mounted() {
+    this.currentUrl = location.href;
+     this.getData(this.$route.query.blogId, function(data) {
       console.log(data, "DA");
     });
     this.getComments(this.$route.query.blogId);
     this.getLike(this.$route.query.blogId);
-  },
-  mounted() {
-    this.currentUrl = location.href;
   },
 
   methods: {
@@ -308,6 +312,7 @@ export default {
           this.shareTitle = res.data.title;
           this.shareDes = res.data.content.slice(0, 33);
           this.shareImge = res.data.img;
+          console.log(this.shareImge, this.shareDes, this.shareTitle, 'yayay0000')
           var initHTML = res.data.html;
           var reg = /width="([ ]*[0-9])\w+" height="([ ]*[0-9])\w+"/g; //
           this.legacySystemHTML = initHTML.replace(
@@ -333,7 +338,6 @@ export default {
         .then(res => {
           if (res.code == 0) {
             this.commentsData = res.data.comments;
-            console.log(res.data.comments, "comment");
           }
         })
         .catch(err => {});
