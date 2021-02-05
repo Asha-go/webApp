@@ -22,22 +22,32 @@ module.exports = {
       {
         hid: 'og:description',
         name: 'og:description',
+        property: 'og:description',
         content: 'Asha Go: Your China Platform'
       },
       {
         hid: 'og:type',
+        name: 'og:type',
         property: 'og:type',
         content: 'website'
       },
       {
         hid: 'og:url',
+        name: 'og:url',
         property: 'og:url',
         content: 'www.ashago.com'
       },
       {
+        hid: 'og:title',
+        name: 'og:title',
+        property: 'og:title',
+        content: 'Asha Go'
+      },
+      {
         hid: 'og:image',
+        name: 'og:image',
         property: 'og:image',
-        content: ''
+        content: '//ashago-resource.oss-cn-zhangjiakou.aliyuncs.com/pic/%E9%A6%96%E9%A1%B5%E5%88%86%E4%BA%AB%E5%8D%A1%E7%89%872.jpg'
       },
     ],
     script: [
