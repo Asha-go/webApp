@@ -19,6 +19,26 @@ module.exports = {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1, viewport-fit=cover' },
+      {
+        hid: 'og:description',
+        name: 'og:description',
+        content: 'Asha Go: Your China Platform'
+      },
+      {
+        hid: 'og:type',
+        property: 'og:type',
+        content: 'website'
+      },
+      {
+        hid: 'og:url',
+        property: 'og:url',
+        content: 'www.ashago.com'
+      },
+      {
+        hid: 'og:image',
+        property: 'og:image',
+        content: ''
+      },
     ],
     script: [
       { src: '/js/facebook.js' },

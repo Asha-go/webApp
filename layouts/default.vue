@@ -115,6 +115,7 @@ export default {
       userName: '',
       loginFlag: false,
       mobile: false,
+      shareImge: require('~/assets/img/shareImage.jpg'),
     }
   },
   mounted() {

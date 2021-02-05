@@ -92,6 +92,7 @@ export default {
   },
   data() {
     return {
+      shareImge: require('~/assets/img/shareImage.jpg'),
       barDisplay: true,
       searchValue: '',
       barActive: 0,
@@ -134,13 +135,14 @@ export default {
 
   },
   mounted() {
-    wx && wx.ready(function () {   //需在用户可能点击分享按钮前就先调用
+    wx && wx.ready(function() {   //需在用户可能点击分享按钮前就先调用
           wx.updateAppMessageShareData({
             title: 'Asha Go: Your China Platform', // 分享标题
             desc: 'We aim to make your life in China easy and exciting', // 分享描述
             imgUrl: '//www.ashago.com/_nuxt/img/Asha-Go-dark-circle-logo-no-text.9850928.png', // 分享图标
             success: function () {
               // 设置成功
+              console.log('updateAppMessageShareData--wx');
             }
           });
           wx.updateTimelineShareData({
@@ -148,6 +150,7 @@ export default {
             imgUrl: '//www.ashago.com/_nuxt/img/Asha-Go-dark-circle-logo-no-text.9850928.png',
             success: function () {
               // 设置成功
+              console.log('updateTimelineShareData--wx');
             }
           });
         });

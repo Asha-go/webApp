@@ -242,19 +242,19 @@ export default {
     return {
       mate:[
         {
-          'hid': 'fb-title',
+          'hid': 'og:title',
           'name': 'og:title',
           'property':  'og:title',
           'content':  `${this.shareTitle}`,
         },
         {
-          'hid': 'fb-des',
+          'hid': 'og:description',
           'name': 'og:description',
           'property':  'og:description',
           'content': `${this.shareDes}`,
         },
         {
-          'hid': 'fb-img',
+          'hid': 'og:image',
           'name': 'og:image',
           'property':  'og:image',
           'content': `${this.shareImge}`
