@@ -17,12 +17,12 @@
 # 4. Change the values for the REGION_ID, REGISTRY, NAMESPACE, IMAGE, ACK_CLUSTER_ID, and ACK_DEPLOYMENT_NAME. 
 #
 
-name: Build and Deploy to ACK stable
+name: Build and Deploy to ACK latest
 
 on:
   push:
     branches:
-    - master
+    - develop
 
 # Environment variables available to all jobs and steps in this workflow.
 env:
@@ -30,7 +30,7 @@ env:
   REGISTRY: registry.cn-zhangjiakou.aliyuncs.com
   NAMESPACE: ashago
   IMAGE: webapp
-  TAG: stable
+  TAG: latest
   ACK_CLUSTER_ID: cc2dbe1fd91f042528f96dc27c2dba5fe
   ACK_DEPLOYMENT_NAME: webapp-default
 
@@ -82,5 +82,5 @@ jobs:
       run: |-
         ./kustomize edit set image REGISTRY/NAMESPACE/IMAGE:TAG=$REGISTRY/$NAMESPACE/$IMAGE:$TAG
         ./kustomize build . | kubectl apply -f -
-        kubectl rollout status deployment/$ACK_DEPLOYMENT_NAME -nashago-prod
-        kubectl get services -o wide -nashago-prod
+        kubectl rollout status deployment/$ACK_DEPLOYMENT_NAME
+        kubectl get services -o wide
