@@ -78,5 +78,6 @@ jobs:
 
     - name: Deploy
       run: |-
+        kubectl rollout restart deployment/$ACK_DEPLOYMENT_NAME
         kubectl rollout status deployment/$ACK_DEPLOYMENT_NAME
         kubectl get services -o wide
