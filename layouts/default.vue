@@ -100,7 +100,10 @@
             <span class="mail-desc"> &nbsp;&nbsp;&nbsp;Email: info@ashago.com</span>
           </div>
           </div>
-          <div class="copyright">Copyright © 2020 Asha Go Inc. All rights reserved.</div>
+          <div class="copyright">
+            <span>Copyright © 2020 Asha Go Inc. All rights reserved.</span>
+            <a href="https://beian.miit.gov.cn/">| 浙ICP备2020036886号-1</a>
+            </div>
         </div>
       </div>
   </div>
@@ -380,6 +383,12 @@ html {
         line-height: 18px;
         text-align: center;
         margin-top: 40px;
+        a {
+          color: #ffffff;
+          &:hover {
+            color:blue;
+          }
+        }
     }
   }
 }
