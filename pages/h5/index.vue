@@ -1,30 +1,21 @@
 <template>
   <div class="h5-container">
-    <div class="search">
-      <span class="conent">
-        <div class="desc">ASHA GO</div>
-        <div class="desc">Your China Platform</div>
-        <div class="desc remark">Life in China should be easy and exciting</div>
-        <a-input-search placeholder="search" v-model="keyWord" @search="search" class="input-search" size="large"/>
+    <span class="conent">
+      <div class="desc">ASHA GO</div>
+      <div class="desc">Your China Platform</div>
+      <div class="desc remark">Life in China should be easy and exciting</div>
+      <span class="search">
+        <a-radio-group v-model="searchType" @change="onChange" class="search-type">
+          <a-radio :value="0">ALL</a-radio>
+          <a-radio :value="1">Article</a-radio>
+          <a-radio :value="2">Service</a-radio>
+        </a-radio-group>
+        <a-input-search class="search-input" placeholder="Search for articles and services" v-model="keyWord" @search="search"  size="large"/>
       </span>
-    </div>
-    <!-- <client-only>
-      <swiper
-        ref="carousel"
-        class="swiper pointer"
-        :options="swiperOptions"
-      >
-        <swiper-slide v-for="(item, index) in bannerData" :key="'banner'+ index">
-          <span @click="goDetail(item.blogId)">
-            <img :src="item.cover" :alt="'banner'+index" >
-          </span>
-        </swiper-slide>
-        <div class="swiper-pagination swiper-pagination-white" slot="pagination"></div>
-      </swiper>
-     </client-only> -->
-     <div class="city-container">
-       <a-card hoverable :bordered="false" class="card-city" v-for="(item, index) in cityData" :key="'city'+ index" @click="search(item.name, 'city')">
-         <img
+    </span>
+    <div class="city-container">
+      <a-card hoverable :bordered="false" class="card-city" v-for="(item, index) in cityData" :key="'city'+ index" @click="search(item.name, 'city')">
+        <img
           class="card-img"
           slot="cover"
           alt="example"
@@ -124,6 +115,7 @@ export default {
       busy: false,
       index: 0,
       active: 0,
+      searchType: 0,
       swiperOptions: {
           loop: true,
           slidesPerView: 'auto',
@@ -220,7 +212,8 @@ export default {
           }
       } else {
         query = {
-          keyWord: value
+          keyWord: value,
+          searchType: this.searchType
         }
       }
       this.$router.push({
@@ -269,7 +262,7 @@ export default {
       color: #8D050B;
     }
   }
-  .search {
+  .conent {
     display: inline-block;
     vertical-align: middle;
     width: 100%;
@@ -278,12 +271,18 @@ export default {
     color: #fff;
     background: url("../../assets/img/phone-index1.jpeg") center;
     background-size: cover;
-    .conent {
+    padding: 25vh 0;
+    .search {
       display: inline-block;
-      margin: 25vh 0;
-      .input-search {
-        width: 80%;
-        margin-top: 3rem;
+      width: 80%;
+      margin-top: 1rem;
+      text-align: left;
+      .search-type {
+        color: #fff;
+      }
+      .search-input{
+        margin-top: 1rem;
+        display: inline-block;
       }
     }
     .desc {
@@ -296,6 +295,7 @@ export default {
       font-size: 1.5rem;
       font-weight: 500;
     }
+
   }
   .more {
     font-size: 1.6rem;
