@@ -5,7 +5,7 @@
       <div class="desc">Your China Platform</div>
       <div class="desc remark">Life in China should be easy and exciting</div>
       <span class="search">
-        <a-radio-group v-model="searchType" @change="onChange" class="search-type">
+        <a-radio-group v-model="searchType"  class="search-type">
           <a-radio :value="0">ALL</a-radio>
           <a-radio :value="1">Article</a-radio>
           <a-radio :value="2">Service</a-radio>
