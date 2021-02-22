@@ -19,7 +19,7 @@
           show-toolbar
           :columns="cityColumns"
           @cancel="cityPicker = false"
-          @confirm="onConfirm"
+          @confirm="onCityConfirm"
         />
     </van-popup>
     <van-popup v-model="serPicker" round position="bottom">
@@ -27,7 +27,7 @@
           show-toolbar
           :columns="serColumns"
           @cancel="serPicker = false"
-          @confirm="onConfirm"
+          @confirm="onSerConfirm"
         />
     </van-popup>
 
@@ -96,9 +96,13 @@ export default {
     };
   },
   methods: {
-    onConfirm(value) {
+    onCityConfirm(value) {
       this.city = value;
-      this.showPicker = false;
+      this.cityPicker = false;
+    },
+    onSerConfirm(value) {
+      this.service = value;
+      this.serPicker = false;
     },
     book(id) {
       this.$router.push('/h5/serDetail/' + id);

@@ -5,6 +5,7 @@
         <div> {{detail.price}}</div>
         <img :src="detail.image" alt="">
         <div v-html="detail.desc"></div>
+
     </div>
 </template>
 <script>
