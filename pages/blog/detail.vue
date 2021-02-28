@@ -277,7 +277,6 @@ export default {
   methods: {
     getData(key, callback) {
       this.$Server({
-        //url: "http://localhost:8080/blog/get-blog-info",
         url: "/blog/get-blog-info",
         method: "post",
         data: {
