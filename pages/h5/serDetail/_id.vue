@@ -17,6 +17,7 @@
         </div>
         <!-- <img :src="detail.image" alt=""> -->
         <div v-html="detail.desc"></div>
+        <van-button round block type="danger" @click="showSubmit">Book Now</van-button>
         <span class="submit" @click="showSubmit">
             <van-icon name="cart-o" size="2rem"/>
         </span>
