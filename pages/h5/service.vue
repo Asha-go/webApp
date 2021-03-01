@@ -78,26 +78,26 @@ export default {
       serColumns : ['online', 'underline'],
       service: 'All Services',
       serData: [{
-        desc: 'Brief information about service provider and service xxxxxxxxxxxxx, test...very good',
+        desc: 'Brief information about service provider chinese teacher test value',
         title: 'chinese teacher',
         price: 'from 200/hr',
         location: 'Shen Zhen',
         id: "504382666264846336",
-        image: 'https://img01.yzcdn.cn/vant/ipad.jpeg'
+        image: 'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fp2.ssl.cdn.btime.com%2Ft0171d94306911f7313.jpg&refer=http%3A%2F%2Fp2.ssl.cdn.btime.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1617181861&t=202f0599517a257e1d9bbfd6718768f2'
       },{
-        desc: 'Brief information about service provider and service xxxxxxxxxxxxx, test...very good',
+        desc: 'Brief information about service provider chinese teacher test value',
         title: 'chinese teacher',
         price: 'from 200/hr',
         location: 'Shen Zhen',
         id: "504382666264846336",
-        image: 'https://img01.yzcdn.cn/vant/ipad.jpeg'
+        image: 'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fp2.ssl.cdn.btime.com%2Ft0171d94306911f7313.jpg&refer=http%3A%2F%2Fp2.ssl.cdn.btime.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1617181861&t=202f0599517a257e1d9bbfd6718768f2'
       }, {
-        desc: 'Brief information about service provider and service xxxxxxxxxxxxx, test...very good',
+        desc: 'Brief information about service provider chinese teacher test value',
         title: 'chinese teacher',
         price: 'from 200/hr',
         location: 'Shen Zhen',
         id: "504382666264846336",
-        image: 'https://img01.yzcdn.cn/vant/ipad.jpeg'
+        image: 'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fp2.ssl.cdn.btime.com%2Ft0171d94306911f7313.jpg&refer=http%3A%2F%2Fp2.ssl.cdn.btime.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1617181861&t=202f0599517a257e1d9bbfd6718768f2'
       }]
     };
   },
@@ -119,16 +119,18 @@ export default {
 <style lang="less" scoped>
 .service-container {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
-  color: #990000;
+  // color: #990000;
   padding: 2rem;
+  text-align: left;
   .title {
     color: #990000;
     font-size: 2rem;
     text-align: center;
   }
   .tags {
-    color: #730e6fcc;
-    font-size: 1.2rem;
+    // color: #730e6fcc;
+    font-size: medium;
+    margin-top: 1rem;
     .location {
       display: block;
       margin-bottom:0.5rem;
@@ -157,21 +159,25 @@ export default {
     height: auto;
   }
   .van-card__title {
-    font-size: 2rem;
+    // font-size: 2rem;
+    font-size: large;
     margin-bottom: 0.5rem;
     line-height: normal
   }
   .van-card__price {
-    font-size: 1.8rem;
+    // font-size: 1.8rem;
     .van-card__price-integer {
-      font-size: 1.8rem;
+      // font-size: 1.8rem;
     }
   }
   .desc {
-    margin:0.3rem 0 0.3rem;
-    color: #736c6c;
-    font-size: 1.5rem;
-    min-height: 7rem;
+    // margin:0.3rem 0 0.3rem;
+    // color: #736c6c;
+    // font-size: 1.5rem;
+    min-height: 5rem;
+    text-align: left;
+    font-size: medium;
+    color: rgba(0, 0, 0, 0.65);
   }
 }
 </style>

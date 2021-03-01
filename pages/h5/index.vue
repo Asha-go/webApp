@@ -24,7 +24,6 @@
       </a-card>
      </div>
     <a-divider class="categoryTitle"> Featured Articles</a-divider>
-    <client-only>
     <div class="article-list" :bordered="false" >
        <div
           v-infinite-scroll="handleInfiniteOnLoad"
@@ -83,10 +82,12 @@
                   </a>
                 </a-list-item>
               </a-list>
+              <van-button class="more" @click="goMore()">Read More</van-button>
           </a-card>
         </div>
       </div>
-    </client-only>
+    <a-divider class="categoryTitle"> Featured service</a-divider>
+    <service></service>
   </div>
 </template>
 
@@ -94,9 +95,11 @@
 const Cookie = process.client ? require('js-cookie') : undefined;
 const baseUrl = '../assets/img/bg';
 import Footer from './footer.vue';
+import Service from './service.vue';
 export default {
   components: {
-    Footer
+    Footer,
+    Service
   },
   computed: {
   },
@@ -160,13 +163,8 @@ export default {
     console.log('fbAsync----')
     window.fbAsyncInit();
     console.log('Current Swiper instance object', this.swiper)
-    // this.swiper.slideTo(3, 1000, false)
   },
   created() {
-    // let categoryList = ['daily', 'food', 'travel']
-    // categoryList.forEach(item => {
-    //   this.getData(item);
-    // });
     this.getRecentData(0);
   },
 
@@ -174,11 +172,14 @@ export default {
     getImgUrl(i) {
       return `${baseUrl}abstract0${i + 1}.jpg`;
     },
+    goMore() {
+      this.$router.push('/article/search?city=All China');
+    },
     getRecentData(index) {
       this.$Server({
         methods: "GET",
         url: "/blog/get-recent-blog",
-        query: {
+        params: {
           index: index || 0
         }
       }).then((res) => {
@@ -192,7 +193,7 @@ export default {
       });
     },
     handleInfiniteOnLoad() {
-      getRecentData(this.index + 1);
+      // this.getRecentData(this.index + 1);
     },
     getRecommend() {
       this.$Server({

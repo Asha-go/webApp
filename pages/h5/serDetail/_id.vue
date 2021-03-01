@@ -27,20 +27,20 @@
                     v-model="order.when"
                     name="when"
                     placeholder="When do you want this service?"
-                    :rules="[{ required: true, message: 'When do you want this service' }]"
+                    :rules="[{ required: true}]"
                 />
                 <van-field
                     v-model="order.where"
                     name="where"
                     placeholder="Where do you want this service?"
-                    :rules="[{ required: true, message: 'Where do you want this service' }]"
+                    :rules="[{ required: true}]"
                 />
 
                 <van-field
                     v-model="order.msg"
                     name="msg"
                     placeholder="Message for service provider:"
-                    :rules="[{ required: true, message: 'Message for service provider' }]"
+                    :rules="[{ required: true }]"
                 />
 
                 <van-field
@@ -48,7 +48,7 @@
                     name="email"
                     type="email"
                     placeholder="Your email address"
-                    :rules="[{ required: true, message: 'Your email address' }]"
+                    :rules="[{ required: true}]"
                 />
 
                 <van-field
@@ -56,11 +56,11 @@
                     type="tel"
                     name="phone"
                     placeholder="Your phone number"
-                    :rules="[{ required: true, message: 'Your phone number' }]"
+                    :rules="[{ required: true}]"
                 />
 
                 <div style="margin: 16px;">
-                    <van-button round block type="info" native-type="submit">提交</van-button>
+                    <van-button round block type="info" native-type="submit">Submit</van-button>
                 </div>
             </van-form>
             <van-calendar v-model="dateShow" @confirm="calendarConfirm" />
@@ -71,7 +71,7 @@
                 title="please"
                 :min-date="minDate"
             /> -->
-            
+
         </van-dialog>
         <van-notify v-model="msgShow" type="success">
                 <van-icon name="bell" style="margin-right: 4px;" />
@@ -126,7 +126,7 @@ export default {
             this.order.when = this.formatDate(value);
         },
         formatDate (date) {
-           return `${date.getMonth() + 1}/${date.getDate()}`     
+           return `${date.getMonth() + 1}/${date.getDate()}`
         },
         getData(key, callback) {
             this.$Server({
