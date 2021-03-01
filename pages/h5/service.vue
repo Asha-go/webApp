@@ -1,19 +1,21 @@
 <template>
   <div class="service-container">
-    <van-field
+    <span class="filter">
+      <van-field
       readonly
       clickable
       :value="city"
       placeholder="City"
       @click="cityPicker = true"
-    />
-    <van-field
-      readonly
-      clickable
-      :value="service"
-      placeholder="All services"
-      @click="serPicker = true"
-    />
+      />
+      <van-field
+        readonly
+        clickable
+        :value="service"
+        placeholder="All services"
+        @click="serPicker = true"
+      />
+    </span>
     <van-popup v-model="cityPicker" round position="bottom">
         <van-picker
           show-toolbar
@@ -49,6 +51,10 @@
               <van-icon name="location-o" size="1rem" />
               {{item.location}}
             </span>
+            <span class="online">
+              <van-icon name="tv-o" size="1rem"/>
+              Also available online
+            </span>
             <!-- <span class="price"> from $200/hr</span> -->
           </div>
         </template>
@@ -73,21 +79,21 @@ export default {
       service: 'All Services',
       serData: [{
         desc: 'Brief information about service provider and service xxxxxxxxxxxxx, test...very good',
-        title: 'china teacher',
+        title: 'chinese teacher',
         price: 'from 200/hr',
         location: 'Shen Zhen',
         id: "fe222",
         image: 'https://img01.yzcdn.cn/vant/ipad.jpeg'
       },{
         desc: 'Brief information about service provider and service xxxxxxxxxxxxx, test...very good',
-        title: 'china teacher',
+        title: 'chinese teacher',
         price: 'from 200/hr',
         location: 'Shen Zhen',
         id: "fe222",
         image: 'https://img01.yzcdn.cn/vant/ipad.jpeg'
       }, {
         desc: 'Brief information about service provider and service xxxxxxxxxxxxx, test...very good',
-        title: 'china teacher',
+        title: 'chinese teacher',
         price: 'from 200/hr',
         location: 'Shen Zhen',
         id: "fe222",
@@ -120,6 +126,26 @@ export default {
     font-size: 2rem;
     text-align: center;
   }
+  .tags {
+    color: #730e6fcc;
+    font-size: 1.2rem;
+    .location {
+      display: block;
+      margin-bottom:0.5rem;
+    }
+    .online {
+      display: block;
+      margin-bottom:0.5rem;
+    }
+  }
+  .filter {
+    display: flex;
+    .van-cell--clickable {
+      border: 0.1rem solid #970505;
+      margin-right: 1rem;
+      border-radius: 0.2rem;
+    }
+  }
   .text {
     margin-top: 2rem;
     line-height: 2.2rem;
@@ -127,16 +153,25 @@ export default {
       margin-bottom: 1rem;
     }
   }
-  .van-card__titl {
-    font-size: 1.5rem;
+  .van-card__thumb {
+    height: auto;
   }
-  .location {
-    color: #730e6fcc;
+  .van-card__title {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    line-height: normal
+  }
+  .van-card__price {
+    font-size: 1.8rem;
+    .van-card__price-integer {
+      font-size: 1.8rem;
+    }
   }
   .desc {
     margin:0.3rem 0 0.3rem;
     color: #736c6c;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
+    min-height: 7rem;
   }
 }
 </style>

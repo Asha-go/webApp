@@ -5,12 +5,12 @@
       <div class="desc">Your China Platform</div>
       <div class="desc remark">Life in China should be easy and exciting</div>
       <span class="search">
+        <a-input-search class="search-input" placeholder="Search for articles and services" v-model="keyWord" @search="search"  size="large"/>
         <a-radio-group v-model="searchType"  class="search-type">
           <a-radio :value="0">ALL</a-radio>
           <a-radio :value="1">Article</a-radio>
           <a-radio :value="2">Service</a-radio>
         </a-radio-group>
-        <a-input-search class="search-input" placeholder="Search for articles and services" v-model="keyWord" @search="search"  size="large"/>
       </span>
     </span>
     <div class="city-container">
@@ -281,7 +281,7 @@ export default {
         color: #fff;
       }
       .search-input{
-        margin-top: 1rem;
+        margin: 1rem 0 1.5rem;
         display: inline-block;
       }
     }
