@@ -277,7 +277,7 @@ export default {
       display: inline-block;
       width: 80%;
       margin-top: 1rem;
-      text-align: left;
+      text-align: center;
       .search-type {
         color: #fff;
       }
@@ -300,6 +300,8 @@ export default {
   }
   .more {
     font-size: 1.6rem;
+    background-color: #96141b;
+    color: #fff;
   }
   .ant-divider-inner-text {
     margin: 26px 0px;

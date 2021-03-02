@@ -162,7 +162,12 @@ export default {
     // font-size: 2rem;
     font-size: large;
     margin-bottom: 0.5rem;
-    line-height: normal
+    line-height: normal;
+    color: #8d040d;
+  }
+  .van-button--danger {
+    background-color:#8d040d ;
+    border: 1px solid #8d040d;
   }
   .van-card__price {
     // font-size: 1.8rem;
