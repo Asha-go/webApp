@@ -17,7 +17,7 @@
         </div>
         <!-- <img :src="detail.image" alt=""> -->
         <div v-html="detail.desc"></div>
-        <van-button round block type="danger" @click="showSubmit">Book Now</van-button>
+        <van-button round block class="submit-button" @click="showSubmit">Book Now</van-button>
         <span class="submit" @click="showSubmit">
             <icon-font type="iconorder"/>
             <!-- <van-icon name="cart-o" size="2rem"/> -->
@@ -88,9 +88,13 @@ const IconFont = Icon.createFromIconfontCN({
 });
 
 export default {
+    components: {
+      IconFont,
+    },
     layout(context) {
       return context.isMobile ? "h5" : "default";
     },
+    
     created() {
         console.log(this.$route.params.id, 'paramsx---id');
         this.getData(this.$route.params.id);
@@ -210,14 +214,15 @@ export default {
             right: 1.2rem;
             top: 60vh;
             border-radius: 1.5rem;
-            background-color: #770e0e;
+            background-color: #8d040c;
             color: #FFF;
             display: inline-flex;
             align-items: center;
             justify-content: center
     }
     .submit-button {
-        color: #770e0e;
+        color: #fff;
+        background-color:#8d040c;
     }
 }
 </style>
