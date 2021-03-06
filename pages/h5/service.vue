@@ -73,9 +73,9 @@ export default {
     return {
       cityPicker: false,
       serPicker: false,
-      cityColumns: ['Shen Zhen', 'Shang hai', 'Bei Jing', 'Hong Kong'],
+      cityColumns: ['Shenzhen', 'Shanghai', 'Beijing', 'Other'],
       city: 'CITY',
-      serColumns : ['online', 'underline'],
+      serColumns : ['Language', 'Travel', 'Daily Life', 'Other'],
       service: 'All Services',
       serData: [{
         desc: 'Brief information about service provider chinese teacher test value',

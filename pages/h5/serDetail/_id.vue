@@ -19,7 +19,8 @@
         <div v-html="detail.desc"></div>
         <van-button round block type="danger" @click="showSubmit">Book Now</van-button>
         <span class="submit" @click="showSubmit">
-            <van-icon name="cart-o" size="2rem"/>
+            <icon-font type="iconorder"/>
+            <!-- <van-icon name="cart-o" size="2rem"/> -->
         </span>
         <van-dialog v-model="submitShow" title="Book Now" :show-cancel-button="false" :showConfirmButton="false">
             <van-form @submit="onSubmit">
@@ -27,7 +28,7 @@
                     v-model="order.when"
                     name="when"
                     placeholder="When do you want this service?"
-                    :rules="[{ required: true}]"
+                    :rules="[{ required: true }]"
                 />
                 <van-field
                     v-model="order.where"
@@ -80,6 +81,12 @@
     </div>
 </template>
 <script>
+import { Icon } from 'ant-design-vue';
+
+const IconFont = Icon.createFromIconfontCN({
+  scriptUrl: '//at.alicdn.com/t/font_2118142_yslhzn63kn.js',
+});
+
 export default {
     layout(context) {
       return context.isMobile ? "h5" : "default";

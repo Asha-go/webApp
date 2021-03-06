@@ -75,7 +75,7 @@ const Cookie = process.client ? require('js-cookie') : undefined
 import { Icon } from 'ant-design-vue';
 
 const IconFont = Icon.createFromIconfontCN({
-  scriptUrl: '//at.alicdn.com/t/font_2118142_fev5ry0wqpp.js',
+  scriptUrl: '//at.alicdn.com/t/font_2118142_yslhzn63kn.js',
 });
 export default {
    components: {
@@ -126,13 +126,11 @@ export default {
     }
   },
   created() {
-    // console.log(this.$route.path, 'h5-----');
     if (['/h5', '/h5/'].indexOf(this.$route.path ) == -1) {
           this.footer = false;
       } else {
           this.footer = true;
       };
-
   },
   mounted() {
     wx && wx.ready(function() {   //需在用户可能点击分享按钮前就先调用
