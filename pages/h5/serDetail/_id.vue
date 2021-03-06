@@ -61,7 +61,7 @@
                 />
 
                 <div style="margin: 16px;">
-                    <van-button round block type="info" native-type="submit">Submit</van-button>
+                    <van-button round block type="info"  class="submit-button" native-type="submit">Submit</van-button>
                 </div>
             </van-form>
             <van-calendar v-model="dateShow" @confirm="calendarConfirm" />
@@ -215,6 +215,9 @@ export default {
             display: inline-flex;
             align-items: center;
             justify-content: center
+    }
+    .submit-button {
+        color: #770e0e;
     }
 }
 </style>
