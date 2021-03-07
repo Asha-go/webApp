@@ -7,7 +7,7 @@
       <span class="search">
         <a-input-search class="search-input" placeholder="Search for articles and services" v-model="keyWord" @search="search"  size="large"/>
         <a-radio-group v-model="searchType"  class="search-type">
-          <a-radio :value="0">ALL</a-radio>
+          <a-radio :value="0">All</a-radio>
           <a-radio :value="1">Article</a-radio>
           <a-radio :value="2">Service</a-radio>
         </a-radio-group>
@@ -86,7 +86,7 @@
           </a-card>
         </div>
       </div>
-    <a-divider class="categoryTitle"> Featured service</a-divider>
+    <a-divider class="categoryTitle"> Featured Service</a-divider>
     <service></service>
   </div>
 </template>
@@ -245,6 +245,9 @@ export default {
   justify-content: center;
   align-items: center;
   text-align: center;
+  .service-container {
+    padding: 1rem 2rem;
+  }
   .van-tabbar {
     display: flex;
     justify-content: space-around;
@@ -280,6 +283,9 @@ export default {
       text-align: center;
       .search-type {
         color: #fff;
+        .ant-radio-wrapper {
+          color: #fff;
+        }
       }
       .search-input{
         margin: 1rem 0 1.5rem;
@@ -299,9 +305,10 @@ export default {
 
   }
   .more {
-    font-size: 1.6rem;
+    font-size: 1.2rem;
     background-color: #96141b;
     color: #fff;
+    font-weight: 700;
   }
   .ant-divider-inner-text {
     margin: 26px 0px;

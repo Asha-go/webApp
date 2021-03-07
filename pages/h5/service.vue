@@ -2,11 +2,11 @@
   <div class="service-container">
     <span class="filter">
       <van-field
-      readonly
-      clickable
-      :value="city"
-      placeholder="City"
-      @click="cityPicker = true"
+        readonly
+        clickable
+        :value="city"
+        placeholder="City"
+        @click="cityPicker = true"
       />
       <van-field
         readonly
@@ -66,23 +66,25 @@
 </template>
 <script>
 export default {
+
   layout(context) {
     return context.isMobile ? "h5" : "default";
   },
+  created() {},
   data() {
     return {
       cityPicker: false,
       serPicker: false,
-      cityColumns: ['Shenzhen', 'Shanghai', 'Beijing', 'Other'],
-      city: 'CITY',
-      serColumns : ['Language', 'Travel', 'Daily Life', 'Other'],
+      cityColumns: ['Online', 'All China','Beijing', 'Shanghai', 'Shenzhen', 'Other'],
+      city: 'City',
+      serColumns : ['Bussiness', 'Language', 'Travel', 'Daily Life', 'Other'],
       service: 'All Services',
       serData: [{
-        desc: 'Brief information about service provider chinese teacher test value',
+        desc: 'Mr. CEON Him is fluent in Mandarin, Cantonese, and Japanese. His specialities are law, diplomacy, and business areas. He welcomes beginner and intermediate learners.',
         title: 'chinese teacher',
         price: 'from 200/hr',
         location: 'Shen Zhen',
-        id: "504382666264846336",
+        id: "test-1",
         image: 'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fp2.ssl.cdn.btime.com%2Ft0171d94306911f7313.jpg&refer=http%3A%2F%2Fp2.ssl.cdn.btime.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1617181861&t=202f0599517a257e1d9bbfd6718768f2'
       },{
         desc: 'Brief information about service provider chinese teacher test value',
@@ -92,7 +94,7 @@ export default {
         id: "504382666264846336",
         image: 'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fp2.ssl.cdn.btime.com%2Ft0171d94306911f7313.jpg&refer=http%3A%2F%2Fp2.ssl.cdn.btime.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1617181861&t=202f0599517a257e1d9bbfd6718768f2'
       }, {
-        desc: 'Brief information about service provider chinese teacher test value',
+        desc: 'Brief information about service provider chinese teacher test value hahahhaha wo lleeeeeee mnnnne',
         title: 'chinese teacher',
         price: 'from 200/hr',
         location: 'Shen Zhen',
@@ -102,6 +104,9 @@ export default {
     };
   },
   methods: {
+    getData() {
+      
+    },
     onCityConfirm(value) {
       this.city = value;
       this.cityPicker = false;
@@ -122,6 +127,9 @@ export default {
   // color: #990000;
   padding: 2rem;
   text-align: left;
+  .van-card {
+    padding: 0px;
+  }
   .title {
     color: #990000;
     font-size: 2rem;
@@ -142,6 +150,7 @@ export default {
   }
   .filter {
     display: flex;
+    padding-bottom: 1.2rem;
     .van-cell--clickable {
       border: 0.1rem solid #970505;
       margin-right: 1rem;
@@ -157,6 +166,10 @@ export default {
   }
   .van-card__thumb {
     height: auto;
+    width: 10rem;
+  }
+  .van-card__content {
+    padding-left: 0.8rem;
   }
   .van-card__title {
     // font-size: 2rem;

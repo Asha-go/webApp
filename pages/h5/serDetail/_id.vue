@@ -6,7 +6,7 @@
                 <van-icon name="location-o" size="1rem" />
                 {{detail.location}}
             </span>
-            <span>
+            <span v-if="detail.isOnlineSupport">
                 <van-icon name="cashier-o" />
                 online
             </span>
@@ -84,7 +84,7 @@
 import { Icon } from 'ant-design-vue';
 
 const IconFont = Icon.createFromIconfontCN({
-  scriptUrl: '//at.alicdn.com/t/font_2118142_yslhzn63kn.js',
+  scriptUrl: '//at.alicdn.com/t/font_2118142_g1bkk5tlukl.js',
 });
 
 export default {
@@ -141,46 +141,23 @@ export default {
         },
         getData(key, callback) {
             this.$Server({
-                url: "/blog/get-blog-info",
-                method: "post",
-                data: {
-                    blogId: key
-                },
-                transformRequest: [
-                function(data) {
-                    let ret = "";
-                    for (let it in data) {
-                    ret +=
-                        encodeURIComponent(it) +
-                        "=" +
-                        encodeURIComponent(data[it]) +
-                        "&";
-                    }
-                    ret = ret.substring(0, ret.lastIndexOf("&"));
-
-                    return ret;
-                }
-                ],
-                headers: {
-                "Content-Type": "application/x-www-form-urlencoded"
-                }
-            })
-                .then(res => {
+                url: "/service/detail",
+                method: "GET",
+                params: {
+                    serviceId: key
+                }}).then(res => {
                 this.loadingFlag = false;
-                this.latestData = res.data;
-                this.latestRealatedBlog = res.dataList;
-                // this.shareTitle = res.data.title;
-                // this.shareDes = res.data.content.slice(0, 33);
-                // this.shareImge = res.data.img;
-                var initHTML = res.data.html;
+                let serviceDetail = res.data.serviceDetail;
                 var reg = /width="([ ]*[0-9])\w+" height="([ ]*[0-9])\w+"/g; //
+                var initHTML = serviceDetail.detailHtml;
                 this.detail.desc = initHTML.replace(
                     reg,
                     'width="100%" height="100%"'
                 );
-                this.detail.desc = this.detail.desc.replace( /How to get a taxi in China/, '')
-                this.detail.title = res.data.title;
-                this.tagList = res.data.tag.split(",");
+                this.detail.title = serviceDetail.title;
+                this.detail.location = serviceDetail.location;
+                this.detail.price = serviceDetail.price;
+                this.detail.isOnlineSupport = serviceDetail.isOnlineSupport;
             }).finally(() => {
                     this.loadingFlag = false;
                 });
@@ -218,7 +195,11 @@ export default {
             color: #FFF;
             display: inline-flex;
             align-items: center;
-            justify-content: center
+            justify-content: center;
+            svg {
+                width: 2em;
+                height: 2em;
+            }
     }
     .submit-button {
         color: #fff;

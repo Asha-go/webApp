@@ -18,6 +18,9 @@
               <nuxt-link to="/h5" class="menu-item" @click.native="menuHandler">
                 <a-icon type="home" class="icon"/> Home
               </nuxt-link>
+              <nuxt-link to="/service" class="menu-item" @click.native="menuHandler">
+                <icon-font type="iconicon_service" class="icon"/>Services
+              </nuxt-link>
               <nuxt-link to="/category/daily?category=daily" class="menu-item" @click.native="menuHandler">
                 <icon-font type="iconDaily" /> Daily Life
               </nuxt-link>
@@ -30,12 +33,9 @@
               <nuxt-link to="/category/language?category=language" class="menu-item" @click.native="menuHandler">
                 <icon-font type="iconlanguage" class="icon"/>Language
               </nuxt-link>
-              <nuxt-link to="/community" class="menu-item" @click.native="menuHandler">
+              <!-- <nuxt-link to="/community" class="menu-item" @click.native="menuHandler">
                 <icon-font type="iconcommunity" class="icon"/>Community
-              </nuxt-link>
-              <nuxt-link to="/service" class="menu-item" @click.native="menuHandler">
-                <icon-font type="iconicon_service" class="icon"/>Service
-              </nuxt-link>
+              </nuxt-link> -->
               <nuxt-link to="/aboutUs" class="menu-item" @click.native="menuHandler">
                 <icon-font type="iconwoshou" class="icon"/>About Us
               </nuxt-link>
