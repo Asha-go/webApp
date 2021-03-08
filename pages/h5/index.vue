@@ -86,7 +86,7 @@
           </a-card>
         </div>
       </div>
-    <a-divider class="categoryTitle"> Featured Service</a-divider>
+    <a-divider class="categoryTitle"> Featured Services</a-divider>
     <service></service>
   </div>
 </template>

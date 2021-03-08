@@ -22,7 +22,7 @@
             <icon-font type="iconorder"/>
             <!-- <van-icon name="cart-o" size="2rem"/> -->
         </span>
-        <van-dialog v-model="submitShow" title="Book Now" :show-cancel-button="false" :showConfirmButton="false">
+        <van-dialog v-model="submitShow" title="Book Now" :show-cancel-button="false" :showConfirmButton="false" :closeOnClickOverlay="true">
             <van-form @submit="onSubmit">
                 <van-field
                     v-model="order.when"
@@ -94,7 +94,7 @@ export default {
     layout(context) {
       return context.isMobile ? "h5" : "default";
     },
-    
+
     created() {
         console.log(this.$route.params.id, 'paramsx---id');
         this.getData(this.$route.params.id);

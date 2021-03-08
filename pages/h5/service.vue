@@ -19,17 +19,23 @@
     <van-popup v-model="cityPicker" round position="bottom">
         <van-picker
           show-toolbar
+          defaultIndex="2"
           :columns="cityColumns"
           @cancel="cityPicker = false"
           @confirm="onCityConfirm"
+          confirm-button-text="confirm"
+          cancel-button-text="cancel"
         />
     </van-popup>
     <van-popup v-model="serPicker" round position="bottom">
         <van-picker
           show-toolbar
+          defaultIndex="2"
           :columns="serColumns"
           @cancel="serPicker = false"
           @confirm="onSerConfirm"
+          confirm-button-text="confirm"
+          cancel-button-text="cancel"
         />
     </van-popup>
 
@@ -79,7 +85,7 @@ export default {
       serPicker: false,
       cityColumns: ['Online', 'All China','Beijing', 'Shanghai', 'Shenzhen', 'Other'],
       city: 'City',
-      serColumns : ['Bussiness', 'Language', 'Travel', 'Daily Life', 'Other'],
+      serColumns : ['Business', 'Language', 'Travel', 'Daily Life', 'Other'],
       service: 'All Services',
       serData: [{
         desc: 'Mr. CEON Him is fluent in Mandarin, Cantonese, and Japanese. His specialities are law, diplomacy, and business areas. He welcomes beginner and intermediate learners.',
