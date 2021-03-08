@@ -299,7 +299,7 @@ html {
 }
 
 .h5-fotter {
-  margin-top: -6rem;
+  // margin-top: -6rem;
   padding-bottom: 6rem;
   color: #fff;
   background-color: #96141b;
