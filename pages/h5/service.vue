@@ -59,7 +59,7 @@
           </div>
         </template>
         <template #footer>
-          <van-button size="mini" @click="book(item.id)" type="danger">BOOK NOW</van-button>
+          <van-button size="mini" @click="book(item.serviceId)" type="danger">BOOK NOW</van-button>
         </template>
     </van-card>
   </div>
@@ -70,7 +70,9 @@ export default {
   layout(context) {
     return context.isMobile ? "h5" : "default";
   },
-  created() {},
+  created() {
+    this.getData();
+  },
   data() {
     return {
       cityPicker: false,
@@ -84,7 +86,7 @@ export default {
         title: 'chinese teacher',
         price: 'from 200/hr',
         location: 'Shen Zhen',
-        id: "test-1",
+        serviceId: "test-1",
         image: 'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fp2.ssl.cdn.btime.com%2Ft0171d94306911f7313.jpg&refer=http%3A%2F%2Fp2.ssl.cdn.btime.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1617181861&t=202f0599517a257e1d9bbfd6718768f2'
       },{
         desc: 'Brief information about service provider chinese teacher test value',
@@ -105,7 +107,13 @@ export default {
   },
   methods: {
     getData() {
-      
+      this.$Server({
+        url: "/service/list",
+        methods: "GET",
+      }).then((res) => {
+        this.serData = res.data.serviceList
+        console.log(res, 'res----');
+      })
     },
     onCityConfirm(value) {
       this.city = value;
@@ -184,6 +192,9 @@ export default {
   }
   .van-card__price {
     // font-size: 1.8rem;
+    .van-card__price-currency {
+      display: none;
+    }
     .van-card__price-integer {
       // font-size: 1.8rem;
     }
@@ -193,6 +204,8 @@ export default {
     // color: #736c6c;
     // font-size: 1.5rem;
     min-height: 5rem;
+    max-height: 10rem;
+    overflow: hidden;
     text-align: left;
     font-size: medium;
     color: rgba(0, 0, 0, 0.65);
