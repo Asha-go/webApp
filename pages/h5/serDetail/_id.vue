@@ -196,9 +196,8 @@ export default {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            svg {
-                width: 2em;
-                height: 2em;
+            i {
+               font-size: 2rem;
             }
     }
     .submit-button {

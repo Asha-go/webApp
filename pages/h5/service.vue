@@ -23,8 +23,8 @@
           :columns="cityColumns"
           @cancel="cityPicker = false"
           @confirm="onCityConfirm"
-          confirm-button-text="confirm"
-          cancel-button-text="cancel"
+          confirm-button-text="Confirm"
+          cancel-button-text="Cancel"
         />
     </van-popup>
     <van-popup v-model="serPicker" round position="bottom">
@@ -34,8 +34,8 @@
           :columns="serColumns"
           @cancel="serPicker = false"
           @confirm="onSerConfirm"
-          confirm-button-text="confirm"
-          cancel-button-text="cancel"
+          confirm-button-text="Confirm"
+          cancel-button-text="Cancel"
         />
     </van-popup>
 
@@ -137,6 +137,7 @@ export default {
 </script>
 <style lang="less" scoped>
 .service-container {
+  line-height: normal;
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   // color: #990000;
   padding: 2rem;
