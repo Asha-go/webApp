@@ -147,7 +147,7 @@ export default {
   }
   .title {
     color: #990000;
-    font-size: 2rem;
+    font-size: 1.4rem;
     text-align: center;
   }
   .tags {
@@ -214,7 +214,7 @@ export default {
     max-height: 10rem;
     overflow: hidden;
     text-align: left;
-    font-size: medium;
+    font-size: small;
     color: rgba(0, 0, 0, 0.65);
   }
 }
