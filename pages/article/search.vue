@@ -2,7 +2,12 @@
   <div>
     <div class="page-search">
      <div class="search">
-       <a-input-search placeholder="search" v-model="keyWord" @search="onSearch" size="large"/>
+      <a-input-search placeholder="search" v-model="keyWord" @search="onSearch" size="large"/>
+      <a-radio-group v-model="searchType"  class="search-type">
+          <a-radio value="0">All</a-radio>
+          <a-radio value="1">Article</a-radio>
+          <a-radio value="2">Service</a-radio>
+      </a-radio-group>
      </div>
       <client-only>
         <div class="article-list" :bordered="false" >
@@ -12,7 +17,7 @@
               :bordered="false"
               :pagination="pagination"
             >
-              <a-list-item :key="i" v-for="(item, i) in searchData" @click="goDetail(item.blogId)">
+              <a-list-item :key="i" v-for="(item, i) in articleList" @click="goDetail(item.blogId)">
                 <div class="listcover">
                   <img style="height: 230px; margin: -10px 0" shape="square" :src="item.img" />
                 </div>
@@ -40,7 +45,7 @@
                             :src="item.avatar"
                           />{{item.author}}
                           <a-divider type="vertical" />
-                          <em>{{item.date}}</em>
+                          <!-- <em>{{item.date}}</em> -->
                         </div>
                       </div>
                       <span slot="actions">
@@ -60,6 +65,7 @@
         </div>
       </client-only>
     </div>
+    <service></service>
     <van-tabbar  v-if="isMoblie">
       <nuxt-link to="/h5" class="tab-item">
         <van-tabbar-item icon="home-o">Home</van-tabbar-item>
@@ -74,23 +80,27 @@
         <van-tabbar-item icon="contact">me</van-tabbar-item>
       </nuxt-link>
     </van-tabbar>
+    <service  :filters="serviceMode.filters" v-if="loadingFlag"></service>
   </div>
 </template>
 <script>
+import Service from '../h5/service.vue';
+
 export default {
     mixins: [],
+    components: {
+      Service
+    },
     layout(context) {
         return context.isMobile ? 'h5' : 'default';
-    },
-    created(context) {
-      this.isMobile = context.isMobile;
     },
     data() {
         return {
             isMoblie: false,
             keyWord: '',
             city: '',
-            searchData: [{
+            loading: false,
+            articleList: [{
                 img: '/assets/img/blog-details/1.jpg',
                 avator: '',
                 title: 'BeiJing BeiJing BeiJing',
@@ -106,15 +116,22 @@ export default {
               pageSize: 10,
               total: 1,
               onChange: page => this.getData(page)
-          }
+          },
+          searchType: 0,
+          serviceMode: {
+            filters: false,
+            hasData: true,
+            data: {}
+          },
       }
     },
     created() {
         this.keyWord = this.$route.query.keyWord || '';
-        this.city =  this.$route.query.city || ''
+        this.city =  this.$route.query.city || '';
         if (this.city) {
-          this.getCityData();
+          // this.getCityData();
         } else {
+          this.searchType = this.$route.query.searchType || 0;
           this.getData();
         }
     },
@@ -154,7 +171,6 @@ export default {
                     "&";
                 }
                 ret = ret.substring(0, ret.lastIndexOf("&"));
-
                 console.log(ret, "---");
                 return ret;
               }
@@ -171,31 +187,32 @@ export default {
           });
         },
         getData(page) {
-            this.$Server({
-                url: '/es/search-content',
+            let url = '/search/all';
+            this.loadingFlag = true;
+            // /search/all?keywords=* 搜索全部
+            // /search/service?keywords=* 搜服务
+            // /search/article?keywords=* 搜文章
+             if (this.searchType == 0) {
+                url = '/search/all';
+             } else if(this.searchType == 2) {
+                url = '/search/service';
+             } else if(this.searchType == 1) {
+                url = '/search/article';
+             }
+             this.$Server({
+                url: url,
                 method: 'GET',
                 params: {
-                  content: this.keyWord,
-                  page: page || 0
-                },
-                transformRequest: [
-                  function(data) {
-                    let ret = "";
-                    for (let it in data) {
-                      ret +=
-                        encodeURIComponent(it) +
-                        "=" +
-                        encodeURIComponent(data[it]) +
-                        "&";
-                    }
-                    ret = ret.substring(0, ret.lastIndexOf("&"));
-                    return ret;
-                  }
-                ],
-            }).then((res) => {
-                this.searchData = res.dataList;
-                this.pagination.total = this.searchData.length;
-            })
+                  keywords: this.keywords
+                }
+              }).then((res) => {
+                console.log(res, 'res----');
+                this.articleList = res.data.articleList;
+                this.serviceMode.data = res.data.serviceList;
+                this.pagination.total = this.articleList.length;
+              }).finally(() => {
+                this.loadingFlag = false;
+              })
         }
     }
 }
@@ -211,10 +228,12 @@ export default {
   .search {
     width: 100%;
     height: 400px;
-    text-align: centrn;
+    text-align: center;
     display: flex;
+
     align-items: center;
     justify-content: center;
+    flex-direction: column;
     background: url("../../assets/img/search.jpg");
     background-size: cover;
     .ant-input-affix-wrapper {
@@ -255,8 +274,15 @@ export default {
     .search {
       background: url("../../assets/img/search-bg2.jpg");
       background-size: contain;
+      flex-direction: column;
       .ant-input-affix-wrapper {
         width: 75%;
+      }
+      .search-type {
+        margin-top: 1rem;
+        .ant-radio-wrapper {
+          color: #fff;
+      }
       }
     }
   }

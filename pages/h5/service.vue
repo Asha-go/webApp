@@ -1,6 +1,6 @@
 <template>
   <div class="service-container">
-    <span class="filter">
+    <span class="filter"  v-show="filters">
       <van-field
         readonly
         clickable
@@ -76,8 +76,30 @@ export default {
   layout(context) {
     return context.isMobile ? "h5" : "default";
   },
+  props: {
+    filters:{
+      type: Boolean,
+      default: true,
+    },
+    mode: {
+      type: Object,
+      default() {
+        return {
+          filters: true,
+          hasData: false,
+          data: {},
+        }
+      },
+
+    }
+  },
   created() {
-    this.getData();
+    console.log(this.mode, '00-0-0000-')
+    if (!this.mode.hasData) {
+      this.getData();
+    } else {
+      this.serData = this.mode.data;
+    }
   },
   data() {
     return {
@@ -87,6 +109,7 @@ export default {
       city: 'City',
       serColumns : ['Business', 'Language', 'Travel', 'Daily Life', 'Other'],
       service: 'All Services',
+
       serData: [{
         desc: 'Mr. CEON Him is fluent in Mandarin, Cantonese, and Japanese. His specialities are law, diplomacy, and business areas. He welcomes beginner and intermediate learners.',
         title: 'chinese teacher',
