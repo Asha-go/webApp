@@ -1,6 +1,6 @@
 <template>
   <div class="service-container">
-    <span class="filter"  v-show="filters">
+    <span class="filter" v-if="mode.filters">
       <van-field
         readonly
         clickable
@@ -94,7 +94,7 @@ export default {
     }
   },
   created() {
-    console.log(this.mode, '00-0-0000-')
+    console.log(this.mode.data, '00-0-0000-', this.filters);
     if (!this.mode.hasData) {
       this.getData();
     } else {

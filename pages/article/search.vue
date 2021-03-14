@@ -4,9 +4,9 @@
      <div class="search">
       <a-input-search placeholder="search" v-model="keyWord" @search="onSearch" size="large"/>
       <a-radio-group v-model="searchType"  class="search-type">
-          <a-radio value="0">All</a-radio>
-          <a-radio value="1">Article</a-radio>
-          <a-radio value="2">Service</a-radio>
+          <a-radio :value="0">All</a-radio>
+          <a-radio :value="1">Article</a-radio>
+          <a-radio :value="2">Service</a-radio>
       </a-radio-group>
      </div>
       <client-only>
@@ -65,7 +65,8 @@
         </div>
       </client-only>
     </div>
-    <service></service>
+    <service v-show="!loadingFlag" :mode="serviceMode"></service>
+
     <van-tabbar  v-if="isMoblie">
       <nuxt-link to="/h5" class="tab-item">
         <van-tabbar-item icon="home-o">Home</van-tabbar-item>
@@ -80,7 +81,6 @@
         <van-tabbar-item icon="contact">me</van-tabbar-item>
       </nuxt-link>
     </van-tabbar>
-    <service  :filters="serviceMode.filters" v-if="loadingFlag"></service>
   </div>
 </template>
 <script>
@@ -117,13 +117,14 @@ export default {
               total: 1,
               onChange: page => this.getData(page)
           },
-          searchType: 0,
+          searchType:  0,
           serviceMode: {
             filters: false,
             hasData: true,
             data: {}
           },
-      }
+          loadingFlag: true
+        }
     },
     created() {
         this.keyWord = this.$route.query.keyWord || '';
@@ -134,6 +135,7 @@ export default {
           this.searchType = this.$route.query.searchType || 0;
           this.getData();
         }
+        console.log('created---');
     },
     watch: {
       '$route.query' (val, oldval) {
@@ -183,6 +185,7 @@ export default {
             this.pagination.total = this.searchData.length;
           })
           .finally(() => {
+            console.log('00000')
             this.loadingFlag = false;
           });
         },
@@ -211,6 +214,7 @@ export default {
                 this.serviceMode.data = res.data.serviceList;
                 this.pagination.total = this.articleList.length;
               }).finally(() => {
+                console.log('res----')
                 this.loadingFlag = false;
               })
         }

@@ -39,6 +39,7 @@
 
                 <van-field
                     v-model="order.msg"
+                    type="textarea"
                     name="msg"
                     placeholder="Message for service provider:"
                     :rules="[{ required: true }]"
