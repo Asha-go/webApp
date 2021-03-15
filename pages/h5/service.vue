@@ -94,12 +94,12 @@ export default {
     }
   },
   created() {
-    console.log(this.mode.data, '00-0-0000-', this.filters);
     if (!this.mode.hasData) {
       this.getData();
     } else {
       this.serData = this.mode.data;
     }
+    console.log(this.mode.data, '00-0-0000-', this.serData);
   },
   data() {
     return {
@@ -141,7 +141,7 @@ export default {
         methods: "GET",
       }).then((res) => {
         this.serData = res.data.serviceList
-        console.log(res, 'res----');
+        console.log(res, 'res----getData');
       })
     },
     onCityConfirm(value) {

@@ -65,7 +65,7 @@
         </div>
       </client-only>
     </div>
-    <service v-show="!loadingFlag" :mode="serviceMode"></service>
+    <service v-if="!loadingFlag" :mode="serviceMode"></service>
 
     <van-tabbar  v-if="isMoblie">
       <nuxt-link to="/h5" class="tab-item">
@@ -135,7 +135,7 @@ export default {
           this.searchType = this.$route.query.searchType || 0;
           this.getData();
         }
-        console.log('created---');
+        console.log('created---', this.$route.query.searchType);
     },
     watch: {
       '$route.query' (val, oldval) {
@@ -206,15 +206,14 @@ export default {
                 url: url,
                 method: 'GET',
                 params: {
-                  keywords: this.keywords
+                  keywords: this.keyWord || 'all'
                 }
               }).then((res) => {
-                console.log(res, 'res----');
                 this.articleList = res.data.articleList;
-                this.serviceMode.data = res.data.serviceList;
+                this.$set(this.serviceMode, 'data',res.data.serviceList);
+                console.log(this.serviceMode.data, 'data---');
                 this.pagination.total = this.articleList.length;
               }).finally(() => {
-                console.log('res----')
                 this.loadingFlag = false;
               })
         }
