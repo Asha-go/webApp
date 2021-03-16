@@ -22,20 +22,52 @@
             <icon-font type="iconorder"/>
             <!-- <van-icon name="cart-o" size="2rem"/> -->
         </span>
-        <van-dialog v-model="submitShow" title="Book Now" :show-cancel-button="false" :showConfirmButton="false" :closeOnClickOverlay="true">
+        <van-dialog
+          v-model="submitShow"
+          :closeOnClickOverlay="true"
+          confirmButtonText="Confirm"
+          confirmButtonColor="#8d040c"
+          :showCancelButton="true"
+          cancelButtonText="Cancel"
+          @confirm= "onSubmit"
+          >
+          <template slot="title">
+              Book Now
+              <!-- <van-icon name="close" class="close" size="3em"/> -->
+          </template>
             <van-form @submit="onSubmit">
+              <van-field
+                    v-model="order.name"
+                    name="name"
+                    placeholder="What is your name?"
+                    :rules="[{ required: true}]"
+                />
+              <van-field
+                    v-model="order.email"
+                    name="email"
+                    type="email"
+                    placeholder="Your email address"
+                    :rules="[{ required: true}]"
+                />
+                <van-field
+                    v-model="order.phone"
+                    type="tel"
+                    name="phone"
+                    placeholder="Your phone number"
+                    :rules="[{ required: true}]"
+                />
                 <van-field
                     v-model="order.when"
                     name="when"
-                    placeholder="When do you want this service?"
+                    placeholder="When and where do you want this service?"
                     :rules="[{ required: true }]"
                 />
-                <van-field
+                <!-- <van-field
                     v-model="order.where"
                     name="where"
                     placeholder="Where do you want this service?"
                     :rules="[{ required: true}]"
-                />
+                /> -->
 
                 <van-field
                     v-model="order.msg"
@@ -45,39 +77,20 @@
                     :rules="[{ required: true }]"
                 />
 
-                <van-field
-                    v-model="order.email"
-                    name="email"
-                    type="email"
-                    placeholder="Your email address"
-                    :rules="[{ required: true}]"
-                />
 
-                <van-field
-                    v-model="order.phone"
-                    type="tel"
-                    name="phone"
-                    placeholder="Your phone number"
-                    :rules="[{ required: true}]"
-                />
-
-                <div style="margin: 16px;">
+                <!-- <div>
+                  <img src="/assets/img/call.jpg" alt="call">
+                  Call service provider
+                </div> -->
+                <!-- <div style="margin: 16px;">
                     <van-button round block type="info"  class="submit-button" native-type="submit">Submit</van-button>
-                </div>
+                </div> -->
             </van-form>
             <van-calendar v-model="dateShow" @confirm="calendarConfirm" />
-            <!-- <van-datetime-picker
-                :show= "dateShow"
-                v-model="order.when"
-                type="date"
-                title="please"
-                :min-date="minDate"
-            /> -->
-
         </van-dialog>
         <van-notify v-model="msgShow" type="success">
-                <van-icon name="bell" style="margin-right: 4px;" />
-                <span>Thank you for booking with Asha Go. We will get back to you shortly!</span>
+              <van-icon name="bell" style="margin-right: 4px;" />
+              <span>Thank you for booking with Asha Go. We will get back to you shortly!</span>
         </van-notify>
     </div>
 </template>
@@ -130,6 +143,13 @@ export default {
             let that = this;
             this.submitShow = false;
             this.msgShow = true;
+            this.$Server({
+              url: "/service/submit",
+              method: 'POST',
+              data: {...this.order},
+            }).then((res) => {
+
+            })
             setTimeout(() => {
                 that.msgShow = false;
             }, 2000);
@@ -184,6 +204,11 @@ export default {
                margin-right: 0.5rem ;
             }
         }
+    }
+    .close {
+      position: fixed;
+      top: 0;
+      right: 0;
     }
     .submit {
             position: fixed;
