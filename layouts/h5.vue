@@ -295,7 +295,7 @@ html {
 .container {
     display: block;
     overflow: hidden;
-    padding-bottom: 50px;
+    padding-bottom: 55px;
 }
 
 .h5-fotter {

@@ -30,11 +30,8 @@
           :showCancelButton="true"
           cancelButtonText="Cancel"
           @confirm= "onSubmit"
+          title="Book Now"
           >
-          <template slot="title">
-              Book Now
-              <!-- <van-icon name="close" class="close" size="3em"/> -->
-          </template>
             <van-form @submit="onSubmit">
               <van-field
                     v-model="order.name"
@@ -169,8 +166,9 @@ export default {
                 }}).then(res => {
                 this.loadingFlag = false;
                 let serviceDetail = res.data.serviceDetail;
-                var reg = /width="([ ]*[0-9])\w+" height="([ ]*[0-9])\w+"/g; //
+                var reg = /width="([ ]*[0-9])\w+" height="([ ]*[0-9])\w+"/g;
                 var initHTML = serviceDetail.detailHtml;
+                console.log(initHTML, 'baidu----');
                 this.detail.desc = initHTML.replace(
                     reg,
                     'width="100%" height="100%"'

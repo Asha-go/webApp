@@ -45,6 +45,7 @@
         :price="item.price"
         :title="item.title"
         :thumb="item.image"
+        @click="book(item.serviceId)"
       >
         <template #desc>
           <div class="desc">
@@ -65,7 +66,7 @@
           </div>
         </template>
         <template #footer>
-          <van-button size="mini" @click="book(item.serviceId)" type="danger">BOOK NOW</van-button>
+          <van-button size="mini"  type="danger">BOOK NOW</van-button>
         </template>
     </van-card>
   </div>
@@ -211,10 +212,11 @@ export default {
   }
   .van-card__title {
     // font-size: 2rem;
-    font-size: large;
+    font-size: medium;
     margin-bottom: 0.5rem;
     line-height: normal;
     color: #8d040d;
+    max-height: 3rem;
   }
   .van-button--danger {
     background-color:#8d040d ;
