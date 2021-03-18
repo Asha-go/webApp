@@ -121,8 +121,8 @@ export default {
             },
             submitShow: false,
             order: {
-                when: '',
-                where: '',
+                whenAndWhere: '',
+                name: '',
                 msg: '',
                 email: '',
                 phone: ''
@@ -166,9 +166,8 @@ export default {
                 }}).then(res => {
                 this.loadingFlag = false;
                 let serviceDetail = res.data.serviceDetail;
-                var reg = /width="([ ]*[0-9])\w+"\s+height="([ ]*[0-9])\w+"/g;
+                var reg = /width=("|')([ ]*[0-9])\w+("|')\s+height=("|')([ ]*[0-9])\w+("|')/g;
                 var initHTML = serviceDetail.detailHtml;
-                console.log(initHTML, 'baidu----');
                 this.detail.desc = initHTML.replace(
                     reg,
                     'width="100%" height="100%"'
