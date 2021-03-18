@@ -47,7 +47,7 @@
                     :rules="[{ required: true}]"
                 />
                 <van-field
-                    v-model="order.phone"
+                    v-model="order.mobile"
                     type="tel"
                     name="phone"
                     placeholder="Your phone number"
@@ -125,7 +125,7 @@ export default {
                 name: '',
                 msg: '',
                 email: '',
-                phone: ''
+                mobile: ''
             },
             minDate: new Date(),
             dateShow: false,
@@ -140,16 +140,22 @@ export default {
             let that = this;
             this.submitShow = false;
             this.msgShow = true;
+            let  data = {...this.order};
+            data.serviceId = this.$route.params.id;
             this.$Server({
               url: "/service/submit",
               method: 'POST',
-              data: {...this.order},
+              data: data,
             }).then((res) => {
-
+              if(res.code == 0) {
+                setTimeout(() => {
+                  that.msgShow = false;
+                }, 2000);
+              }
+            }).catch((err) => {
+               this.$message(err.msg);
             })
-            setTimeout(() => {
-                that.msgShow = false;
-            }, 2000);
+
         },
         calendarConfirm(value) {
             this.order.when = this.formatDate(value);
