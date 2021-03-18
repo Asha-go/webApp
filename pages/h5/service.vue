@@ -91,14 +91,22 @@ export default {
           data: {},
         }
       },
-
+    }
+  },
+  computed: {
+    serData() {
+      if(typeof this.allData == "object") {
+        return  this.allData.filter((item) => {
+        })
+      }
     }
   },
   created() {
     if (!this.mode.hasData) {
       this.getData();
     } else {
-      this.serData = this.mode.data;
+      this.allData = this.mode.data;
+      // this.serData = this.mode.data;
     }
     console.log(this.mode.data, '00-0-0000-', this.serData);
   },
@@ -107,8 +115,8 @@ export default {
       cityPicker: false,
       serPicker: false,
       cityColumns: ['Online', 'All China','Beijing', 'Shanghai', 'Shenzhen', 'Other'],
-      city: 'City',
-      serColumns : ['Business', 'Language', 'Travel', 'Daily Life', 'Other'],
+      city: 'All China',
+      serColumns : ['Business', 'Language', 'Travel', 'Daily Life', 'Other', 'All Services'],
       service: 'All Services',
 
       serData: [{
@@ -141,7 +149,8 @@ export default {
         url: "/service/list",
         methods: "GET",
       }).then((res) => {
-        this.serData = res.data.serviceList
+        this.allData = res.data.serviceList;
+        // this.serData = this.allData;
         console.log(res, 'res----getData');
       })
     },
