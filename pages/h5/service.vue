@@ -100,12 +100,12 @@ export default {
           return this.allData;
         } else {
           return this.allData.filter((item) => {
-            if (this.city ==  'All China' || item.location == this.city) {
+            let cityOf =  ['All China', this.city].indexOf(item.location);
+            let categoryOf = ['All Services', this.service].indexOf(item.category);
+            if (cityOf >-1 && categoryOf > -1) {
               return true;
-            } else if(this.service ==  'All Services' || item.category == this.service) {
-              return true
-            }
-            return false;     
+            } 
+            return false;
           });
         }
       }
