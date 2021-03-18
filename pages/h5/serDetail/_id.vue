@@ -54,7 +54,7 @@
                     :rules="[{ required: true}]"
                 />
                 <van-field
-                    v-model="order.when"
+                    v-model="order.whenAndWhere"
                     name="when"
                     placeholder="When and where do you want this service?"
                     :rules="[{ required: true }]"
@@ -166,7 +166,7 @@ export default {
                 }}).then(res => {
                 this.loadingFlag = false;
                 let serviceDetail = res.data.serviceDetail;
-                var reg = /width="([ ]*[0-9])\w+" height="([ ]*[0-9])\w+"/g;
+                var reg = /width="([ ]*[0-9])\w+"\s+height="([ ]*[0-9])\w+"/g;
                 var initHTML = serviceDetail.detailHtml;
                 console.log(initHTML, 'baidu----');
                 this.detail.desc = initHTML.replace(
