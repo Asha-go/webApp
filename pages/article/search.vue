@@ -10,7 +10,7 @@
       </a-radio-group>
      </div>
       <client-only>
-        <div class="article-list" :bordered="false" >
+        <div class="article-list" :bordered="false" v-show="articleList.length != 0">
           <a-card :bordered="false" class="card-container">
             <a-list
               size="large"

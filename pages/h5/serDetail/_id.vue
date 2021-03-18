@@ -107,7 +107,6 @@ export default {
     },
 
     created() {
-        console.log(this.$route.params.id, 'paramsx---id');
         this.getData(this.$route.params.id);
     },
     data() {
@@ -139,7 +138,7 @@ export default {
         onSubmit(values) {
             let that = this;
             this.submitShow = false;
-            this.msgShow = true;
+            // this.msgShow = true;
             let  data = {...this.order};
             data.serviceId = this.$route.params.id;
             this.$Server({
@@ -148,14 +147,11 @@ export default {
               data: data,
             }).then((res) => {
               if(res.code == 0) {
-                setTimeout(() => {
-                  that.msgShow = false;
-                }, 2000);
+                this.$message.success('Thank you for booking with Asha Go. We will get back to you shortly!');
               }
             }).catch((err) => {
-               this.$message(err.msg);
+               this.$message.error(err.msg || 'sorry, plesase try again');
             })
-
         },
         calendarConfirm(value) {
             this.order.when = this.formatDate(value);
