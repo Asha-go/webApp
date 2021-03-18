@@ -95,9 +95,19 @@ export default {
   },
   computed: {
     serData() {
-      if(typeof this.allData == "object") {
-        return  this.allData.filter((item) => {
-        })
+      if((typeof this.allData) == "object") {
+        if(this.city == 'All China' && this.service == 'All Services') {
+          return this.allData;
+        } else {
+          return this.allData.filter((item) => {
+            if (this.city ==  'All China' || item.location == this.city) {
+              return true;
+            } else if(this.service ==  'All Services' || item.category == this.service) {
+              return true
+            }
+            return false;     
+          });
+        }
       }
     }
   },
@@ -119,26 +129,12 @@ export default {
       serColumns : ['Business', 'Language', 'Travel', 'Daily Life', 'Other', 'All Services'],
       service: 'All Services',
 
-      serData: [{
+      allData: [{
         desc: 'Mr. CEON Him is fluent in Mandarin, Cantonese, and Japanese. His specialities are law, diplomacy, and business areas. He welcomes beginner and intermediate learners.',
         title: 'chinese teacher',
         price: 'from 200/hr',
         location: 'Shen Zhen',
         serviceId: "test-1",
-        image: 'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fp2.ssl.cdn.btime.com%2Ft0171d94306911f7313.jpg&refer=http%3A%2F%2Fp2.ssl.cdn.btime.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1617181861&t=202f0599517a257e1d9bbfd6718768f2'
-      },{
-        desc: 'Brief information about service provider chinese teacher test value',
-        title: 'chinese teacher',
-        price: 'from 200/hr',
-        location: 'Shen Zhen',
-        id: "504382666264846336",
-        image: 'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fp2.ssl.cdn.btime.com%2Ft0171d94306911f7313.jpg&refer=http%3A%2F%2Fp2.ssl.cdn.btime.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1617181861&t=202f0599517a257e1d9bbfd6718768f2'
-      }, {
-        desc: 'Brief information about service provider chinese teacher test value hahahhaha wo lleeeeeee mnnnne',
-        title: 'chinese teacher',
-        price: 'from 200/hr',
-        location: 'Shen Zhen',
-        id: "504382666264846336",
         image: 'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fp2.ssl.cdn.btime.com%2Ft0171d94306911f7313.jpg&refer=http%3A%2F%2Fp2.ssl.cdn.btime.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1617181861&t=202f0599517a257e1d9bbfd6718768f2'
       }]
     };
