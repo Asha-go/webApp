@@ -221,7 +221,7 @@ export default {
     margin-bottom: 0.5rem;
     line-height: normal;
     color: #8d040d;
-    max-height: 3rem;
+    max-height: 3.2rem;
   }
   .van-button--danger {
     background-color:#8d040d ;
