@@ -103,8 +103,8 @@ export default {
 
             let cityOf =  (this.city == 'All') || (this.city == item.location);
             let categoryOf =  (this.service == 'All Services') || (item.category == this.service);
-            
-            if (cityOf  && categoryOf  -1) {
+
+            if (cityOf  && categoryOf) {
               return true;
             } 
             return false;
