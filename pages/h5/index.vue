@@ -173,7 +173,7 @@ export default {
       return `${baseUrl}abstract0${i + 1}.jpg`;
     },
     goMore() {
-      this.recentData.concat(this.allData.splice(index,3));
+      this.recentData.concat(this.allData.splice(this.index,3));
       this.index++;
       // this.$router.push('/article/search?city=All China');
     },

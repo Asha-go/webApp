@@ -100,10 +100,13 @@ export default {
           return this.allData;
         } else {
           return this.allData.filter((item) => {
-
-            let cityOf =  (this.city == 'All') || (this.city == item.location);
+            let cityOf = false;
             let categoryOf =  (this.service == 'All Services') || (item.category == this.service);
-
+            if(this.city == 'Online') {
+               cityOf = item.isOnlineSupport;
+            } else {
+               cityOf = (this.city == 'All') || (this.city == item.location);
+            }
             if (cityOf  && categoryOf) {
               return true;
             } 
@@ -224,6 +227,7 @@ export default {
     line-height: normal;
     color: #8d040d;
     max-height: 3.2rem;
+    overflow: visible;
   }
   .van-button--danger {
     background-color:#8d040d ;
