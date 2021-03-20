@@ -100,9 +100,11 @@ export default {
           return this.allData;
         } else {
           return this.allData.filter((item) => {
-            let cityOf =  ['All', this.city].indexOf(item.location);
-            let categoryOf = ['All Services', this.service].indexOf(item.category);
-            if (cityOf >-1 && categoryOf > -1) {
+
+            let cityOf =  (this.city == 'All') || (this.city == item.location);
+            let categoryOf =  (this.service == 'All Services') || (item.category == this.service);
+            
+            if (cityOf  && categoryOf  -1) {
               return true;
             } 
             return false;
