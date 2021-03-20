@@ -173,7 +173,9 @@ export default {
       return `${baseUrl}abstract0${i + 1}.jpg`;
     },
     goMore() {
-      this.$router.push('/article/search?city=All China');
+      this.recentData.concat(this.allData.splice(index,3));
+      this.index++;
+      // this.$router.push('/article/search?city=All China');
     },
     getRecentData(index) {
       this.$Server({
@@ -188,7 +190,9 @@ export default {
             item.tagList = item.tags.split(',') || ['tag1', '我热门呀', 'tag3', 'tag4']
             item.content = item.content || '暂时文章没数据, 我来充充数我来充充数我来充充数我来充充数我来充充数充充数充充数充充数'
           });
-          this.recentData = this.recentData.concat(res.data.recentBlogs);
+          this.allData = res.data.recentBlogs;
+          this.recentData = this.recentData.concat(this.allData.splice(0,3));
+          this.index = 1;
         }
       });
     },
