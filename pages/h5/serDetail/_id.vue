@@ -8,7 +8,7 @@
             </span>
             <span v-if="detail.isOnlineSupport">
                 <van-icon name="cashier-o" />
-                online
+                Online
             </span>
             <span>
                 <van-icon name="gold-coin-o" />
@@ -191,6 +191,7 @@ export default {
     .title {
         font-size: 2rem;
         text-align: center;
+        line-height: 3rem;
     }
     .desc {
         padding: 1rem;

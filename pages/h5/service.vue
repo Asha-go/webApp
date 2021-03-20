@@ -96,11 +96,11 @@ export default {
   computed: {
     serData() {
       if((typeof this.allData) == "object") {
-        if(this.city == 'All China' && this.service == 'All Services') {
+        if(this.city == 'All' && this.service == 'All Services') {
           return this.allData;
         } else {
           return this.allData.filter((item) => {
-            let cityOf =  ['All China', this.city].indexOf(item.location);
+            let cityOf =  ['All', this.city].indexOf(item.location);
             let categoryOf = ['All Services', this.service].indexOf(item.category);
             if (cityOf >-1 && categoryOf > -1) {
               return true;
@@ -124,8 +124,8 @@ export default {
     return {
       cityPicker: false,
       serPicker: false,
-      cityColumns: ['Online', 'All China','Beijing', 'Shanghai', 'Shenzhen', 'Other'],
-      city: 'All China',
+      cityColumns: ['Online', 'All','Beijing', 'Shanghai', 'Shenzhen', 'Other'],
+      city: 'All',
       serColumns : ['Business', 'Language', 'Travel', 'Daily Life', 'Other', 'All Services'],
       service: 'All Services',
 
