@@ -2,7 +2,7 @@
   <div>
     <div class="page-search">
      <div class="search">
-      <a-input-search placeholder="search" v-model="keyWord" @search="onSearch" size="large"/>
+      <a-input-search placeholder="search" v-model="keywords" @search="onSearch" size="large"/>
       <a-radio-group v-model="searchType"  class="search-type">
           <a-radio :value="0">All</a-radio>
           <a-radio :value="1">Article</a-radio>
@@ -97,7 +97,7 @@ export default {
     data() {
         return {
             isMoblie: false,
-            keyWord: '',
+            keywords: '',
             city: '',
             loading: false,
             articleList: [{
@@ -129,12 +129,8 @@ export default {
     created() {
         this.keyWord = this.$route.query.keyWord || '';
         this.city =  this.$route.query.city || '';
-        if (this.city) {
-          // this.getCityData();
-        } else {
-          this.searchType = this.$route.query.searchType || 0;
-          this.getData();
-        }
+        this.searchType = this.$route.query.searchType || 0;
+        this.getData();
         console.log('created---', this.$route.query.searchType);
     },
     watch: {
@@ -191,6 +187,13 @@ export default {
         },
         getData(page) {
             let url = '/search/all';
+            let keywords = 'all';
+            if (this.city) {
+              keywords = "city:" + this.city ;
+              this.keywords && (keywords = keywords + " AND title:" + this.keywords);
+            } else {
+              keywords = this.keywords;
+            }
             this.loadingFlag = true;
             // /search/all?keywords=* 搜索全部
             // /search/service?keywords=* 搜服务
@@ -202,14 +205,15 @@ export default {
              } else if(this.searchType == 1) {
                 url = '/search/article';
              }
+
              this.$Server({
                 url: url,
                 method: 'GET',
                 params: {
-                  keywords: this.keyWord || 'all'
+                  keywords: keywords
                 }
               }).then((res) => {
-                this.articleList = res.data.articleList;
+                this.articleList = res.data.articleList || [];
                 this.$set(this.serviceMode, 'data',res.data.serviceList);
                 console.log(this.serviceMode.data, 'data---');
                 this.pagination.total = this.articleList.length;

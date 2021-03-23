@@ -109,7 +109,7 @@ export default {
             }
             if (cityOf  && categoryOf) {
               return true;
-            } 
+            }
             return false;
           });
         }
