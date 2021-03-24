@@ -91,7 +91,7 @@ export default {
       Service
     },
     layout(context) {
-        return context.isMobile ? 'h5' : 'default';
+      return context.isMobile ? 'h5' : 'default';
     },
     data() {
         return {
