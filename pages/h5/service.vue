@@ -56,7 +56,7 @@
           <div class="tags">
             <span class="location">
               <van-icon name="location-o" size="1rem" />
-              {{item.location}}
+              {{item.city}}
             </span>
             <span class="online">
               <van-icon name="tv-o" size="1rem"/>
@@ -105,7 +105,7 @@ export default {
             if(this.city == 'Online') {
                cityOf = item.isOnlineSupport;
             } else {
-               cityOf = (this.city == 'All') || (this.city == item.location);
+               cityOf = (this.city == 'All') || (this.city == item.city);
             }
             if (cityOf  && categoryOf) {
               return true;
@@ -138,7 +138,7 @@ export default {
         desc: 'Mr. CEON Him is fluent in Mandarin, Cantonese, and Japanese. His specialities are law, diplomacy, and business areas. He welcomes beginner and intermediate learners.',
         title: 'chinese teacher',
         price: 'from 200/hr',
-        location: 'Shen Zhen',
+        city: 'Shen Zhen',
         serviceId: "test-1",
         image: 'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fp2.ssl.cdn.btime.com%2Ft0171d94306911f7313.jpg&refer=http%3A%2F%2Fp2.ssl.cdn.btime.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1617181861&t=202f0599517a257e1d9bbfd6718768f2'
       }]
