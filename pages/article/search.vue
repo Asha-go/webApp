@@ -155,7 +155,7 @@ export default {
             let url = '/search/all';
             let keywords = 'all';
             if (this.city) {
-              keywords = "city:" + this.city ;
+              keywords = "city:" + this.city;
               this.keywords && (keywords = keywords + " AND title:" + this.keywords);
             } else {
               keywords = this.keywords;

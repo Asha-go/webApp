@@ -5,7 +5,7 @@
       <div class="desc">Your China Platform</div>
       <div class="desc remark">Life in China should be easy and exciting</div>
       <span class="search">
-        <a-input-search class="search-input" placeholder="Search for articles and services" v-model="keyWord" @search="search"  size="large"/>
+        <a-input-search class="search-input" placeholder="Search for articles and services" v-model="keywords" @search="search"  size="large"/>
         <a-radio-group v-model="searchType"  class="search-type">
           <a-radio :value="0">All</a-radio>
           <a-radio :value="1">Article</a-radio>
@@ -112,7 +112,7 @@ export default {
   data() {
     return {
       baseUrl,
-      keyWord: '',
+      keywords: '',
       recentData: [],
       loading: false,
       busy: false,
@@ -217,7 +217,7 @@ export default {
           }
       } else {
         query = {
-          keyword: value,
+          keywords: value,
           searchType: this.searchType
         }
       }
