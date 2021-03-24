@@ -2,7 +2,7 @@
   <div>
     <div class="page-search">
      <div class="search">
-      <a-input-search placeholder="search" v-model="keyword" @search="onSearch" size="large"/>
+      <a-input-search placeholder="search" v-model="keywords" @search="onSearch" size="large"/>
       <a-radio-group v-model="searchType"  class="search-type">
           <a-radio :value="0">All</a-radio>
           <a-radio :value="1">Article</a-radio>
@@ -97,14 +97,14 @@ export default {
     data() {
         return {
             isMoblie: false,
-            keyword: '',
+            keywords: '',
             city: '',
             loading: false,
             articleList: [{
                 img: '/assets/img/blog-details/1.jpg',
                 avator: '',
                 title: 'BeiJing BeiJing BeiJing',
-                content: 'This is your blog post. To really engage your site visitors we suggest you blog about subjects that are related to your site or business. Blogging is really great for SEO, so we recommend including keyword that relate to your',
+                content: 'This is your blog post. To really engage your site visitors we suggest you blog about subjects that are related to your site or business. Blogging is really great for SEO, so we recommend including keywords that relate to your',
                 tag: ['Foods', 'Travel'],
                 date: '2020-01-21',
                 author: 'Jemma Admin',
@@ -127,7 +127,7 @@ export default {
         }
     },
     created() {
-        this.keyword = this.$route.query.keyword || '';
+        this.keywords = this.$route.query.keywords || '';
         this.city =  this.$route.query.city || '';
         this.searchType = this.$route.query.searchType || 0;
         this.getData();
@@ -135,7 +135,7 @@ export default {
     },
     watch: {
       '$route.query' (val, oldval) {
-        this.keyword = val.keyword;
+        this.keywords = val.keywords;
         this.getData();
       }
     },
@@ -151,53 +151,19 @@ export default {
             }
           })
         },
-        getCityData(page){
-          this.$Server({
-            url: "/blog/get-blog-list",
-            method: "post",
-            data: {
-              city: this.city
-            },
-            transformRequest: [
-              function(data) {
-                let ret = "";
-                for (let it in data) {
-                  ret +=
-                    encodeURIComponent(it) +
-                    "=" +
-                    encodeURIComponent(data[it]) +
-                    "&";
-                }
-                ret = ret.substring(0, ret.lastIndexOf("&"));
-                console.log(ret, "---");
-                return ret;
-              }
-            ],
-            headers: {
-              "Content-Type": "application/x-www-form-urlencoded"
-            }
-          }).then(res => {
-            this.searchData = res.dataList || [];
-            this.pagination.total = this.searchData.length;
-          })
-          .finally(() => {
-            console.log('00000')
-            this.loadingFlag = false;
-          });
-        },
         getData(page) {
             let url = '/search/all';
-            let keyword = 'all';
+            let keywords = 'all';
             if (this.city) {
-              keyword = "city:" + this.city ;
-              this.keyword && (keyword = keyword + " AND title:" + this.keyword);
+              keywords = "city:" + this.city ;
+              this.keywords && (keywords = keywords + " AND title:" + this.keywords);
             } else {
-              keyword = this.keyword;
+              keywords = this.keywords;
             }
             this.loadingFlag = true;
-            // /search/all?keyword=* 搜索全部
-            // /search/service?keyword=* 搜服务
-            // /search/article?keyword=* 搜文章
+            // /search/all?keywords=* 搜索全部
+            // /search/service?keywords=* 搜服务
+            // /search/article?keywords=* 搜文章
              if (this.searchType == 0) {
                 url = '/search/all';
              } else if(this.searchType == 2) {
@@ -210,7 +176,7 @@ export default {
                 url: url,
                 method: 'GET',
                 params: {
-                  keyword: keyword
+                  keywords: keywords
                 }
               }).then((res) => {
                 this.articleList = res.data.articleList || [];
