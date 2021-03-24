@@ -2,7 +2,7 @@
   <div>
     <div class="page-search">
      <div class="search">
-      <a-input-search placeholder="search" v-model="keywords" @search="onSearch" size="large"/>
+      <a-input-search placeholder="search" v-model="keyword" @search="onSearch" size="large"/>
       <a-radio-group v-model="searchType"  class="search-type">
           <a-radio :value="0">All</a-radio>
           <a-radio :value="1">Article</a-radio>
@@ -97,14 +97,14 @@ export default {
     data() {
         return {
             isMoblie: false,
-            keywords: '',
+            keyword: '',
             city: '',
             loading: false,
             articleList: [{
                 img: '/assets/img/blog-details/1.jpg',
                 avator: '',
                 title: 'BeiJing BeiJing BeiJing',
-                content: 'This is your blog post. To really engage your site visitors we suggest you blog about subjects that are related to your site or business. Blogging is really great for SEO, so we recommend including keywords that relate to your',
+                content: 'This is your blog post. To really engage your site visitors we suggest you blog about subjects that are related to your site or business. Blogging is really great for SEO, so we recommend including keyword that relate to your',
                 tag: ['Foods', 'Travel'],
                 date: '2020-01-21',
                 author: 'Jemma Admin',
@@ -187,17 +187,17 @@ export default {
         },
         getData(page) {
             let url = '/search/all';
-            let keywords = 'all';
+            let keyword = 'all';
             if (this.city) {
-              keywords = "city:" + this.city ;
-              this.keywords && (keywords = keywords + " AND title:" + this.keywords);
+              keyword = "city:" + this.city ;
+              this.keyword && (keyword = keyword + " AND title:" + this.keyword);
             } else {
-              keywords = this.keywords;
+              keyword = this.keyword;
             }
             this.loadingFlag = true;
-            // /search/all?keywords=* 搜索全部
-            // /search/service?keywords=* 搜服务
-            // /search/article?keywords=* 搜文章
+            // /search/all?keyword=* 搜索全部
+            // /search/service?keyword=* 搜服务
+            // /search/article?keyword=* 搜文章
              if (this.searchType == 0) {
                 url = '/search/all';
              } else if(this.searchType == 2) {
@@ -210,7 +210,7 @@ export default {
                 url: url,
                 method: 'GET',
                 params: {
-                  keywords: keywords
+                  keyword: keyword
                 }
               }).then((res) => {
                 this.articleList = res.data.articleList || [];

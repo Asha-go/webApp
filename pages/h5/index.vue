@@ -217,7 +217,7 @@ export default {
           }
       } else {
         query = {
-          keywords: value,
+          keyword: value,
           searchType: this.searchType
         }
       }
