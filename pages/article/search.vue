@@ -127,7 +127,7 @@ export default {
         }
     },
     created() {
-        this.keyWord = this.$route.query.keyWord || '';
+        this.keyword = this.$route.query.keyword || '';
         this.city =  this.$route.query.city || '';
         this.searchType = this.$route.query.searchType || 0;
         this.getData();
@@ -135,7 +135,7 @@ export default {
     },
     watch: {
       '$route.query' (val, oldval) {
-        this.keyWord = val.keyWord;
+        this.keyword = val.keyword;
         this.getData();
       }
     },
