@@ -185,7 +185,7 @@ const blogId = "";
 const currentUrl = "";
 export default {
   layout(context) {
-    return context. ? "h5" : "default";
+    return context.isMobile ? "h5" : "default";
   },
   watch: {
     "$route.query"(newValue) {
