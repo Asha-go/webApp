@@ -4,7 +4,7 @@
         <div class="desc">
             <span>
                 <van-icon name="location-o" size="1rem" />
-                {{detail.location}}
+                {{detail.city}}
             </span>
             <span v-if="detail.isOnlineSupport">
                 <van-icon name="cashier-o" />
@@ -175,7 +175,7 @@ export default {
                     'width="100%" height="100%"'
                 );
                 this.detail.title = serviceDetail.title;
-                this.detail.location = serviceDetail.location;
+                this.detail.city = serviceDetail.city;
                 this.detail.price = serviceDetail.price;
                 this.detail.isOnlineSupport = serviceDetail.isOnlineSupport;
             }).finally(() => {

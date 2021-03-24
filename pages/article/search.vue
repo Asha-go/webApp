@@ -64,9 +64,8 @@
           </a-card>
         </div>
       </client-only>
-    </div>
     <service v-if="!loadingFlag" :mode="serviceMode"></service>
-
+    </div>
     <van-tabbar  v-if="isMoblie">
       <nuxt-link to="/h5" class="tab-item">
         <van-tabbar-item icon="home-o">Home</van-tabbar-item>
