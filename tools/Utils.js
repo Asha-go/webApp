@@ -1,4 +1,4 @@
-const { JSEncrypt } = process.client ? require('jsencrypt/bin/jsencrypt') : {};
+const { JSEncrypt } = require('jsencrypt/bin/jsencrypt') ;
 export default {
   encryption: value => {
     if (JSEncrypt) {
