@@ -173,7 +173,7 @@
           method: 'post',
           data: {
             email: values.email,
-            password: encryption(values['password']),
+            password: values['password'],
             subscribed: !!values.subscribed,
             userName: values.userName,
           }
