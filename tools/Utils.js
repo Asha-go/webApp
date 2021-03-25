@@ -1,4 +1,4 @@
-const { JSEncrypt } = require('jsencrypt/bin/jsencrypt') ;
+const { JSEncrypt } = process.client ? require('jsencrypt/bin/jsencrypt') : {};
 export default {
   encryption: value => {
     if (JSEncrypt) {
@@ -8,7 +8,7 @@ export default {
       //return crypt.encrypt(value);
       return value;
     }
-   return undefined;
+   return value;
   },
   /**
    * 功能：解析URL参数
