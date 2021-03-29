@@ -9,7 +9,7 @@
       <a-col :span="4" />
       <a-col :span="16">
         <div style="height:60px">
-        <h1 style="color:#990000;font-size:40px;line-height:30px;font-family:Helvetica;">Asha Go Service (coming soon)</h1>
+        <h1 style="color:#990000;font-size:40px;line-height:30px;font-family:Helvetica;">Asha Go Services </h1>
       </div>
       </a-col>
       <a-col :span="4" />
@@ -23,7 +23,7 @@
           Whether you wish to learn Chinese, expand your business, or hire a driver; the Asha Go platform can connect you with the right service provider.
       </p>
       <p style="color:#990000;font-size:18px;line-height:30px;font-family:Helvetica;">What services do you require?</p>
-      <p style="color:#990000;font-size:18px;line-height:30px;font-family:Helvetica;">Send us an email at <b>info@ashago.com</b>and let us know how we can help you.</p>
+      <p style="color:#990000;font-size:18px;line-height:30px;font-family:Helvetica;">Send us an email at <b>info@ashago.com</b> and let us know how we can help you.</p>
 
       </a-col>
       <a-col :span="2" />
