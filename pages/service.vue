@@ -18,12 +18,12 @@
       <a-col :span="2" />
       <a-col :span="20">
         <div style="height:40px"></div>
-      <p style="color:#990000;font-size:18px;line-height:30px;font-family:Helvetica;">Asha Go aims to make your life in China easy and exciting </p>
-      <p style="color:#990000;font-size:18px;line-height:30px;font-family:Helvetica;">We will soon be advertising reliable, competent, and high-quality service providers to address your everyday needs.
-          For example: drivers, cleaners, tour guides, and language instructors.
+      <p style="color:#990000;font-size:18px;line-height:30px;font-family:Helvetica;">Asha Go is an online peer to peer marketplace for services in China.</p>
+      <p style="color:#990000;font-size:18px;line-height:30px;font-family:Helvetica;">We make the Chinese service market transparent and accessible with fixed prices. We help foreigners enter China for business, study, or travel.
+          Whether you wish to learn Chinese, expand your business, or hire a driver; the Asha Go platform can connect you with the right service provider.
       </p>
       <p style="color:#990000;font-size:18px;line-height:30px;font-family:Helvetica;">What services do you require?</p>
-      <p style="color:#990000;font-size:18px;line-height:30px;font-family:Helvetica;">Please drop us an email to let us better help you: <b>info@ashago.com</b></p>
+      <p style="color:#990000;font-size:18px;line-height:30px;font-family:Helvetica;">Send us an email at <b>info@ashago.com</b>and let us know how we can help you.</p>
 
       </a-col>
       <a-col :span="2" />
