@@ -73,7 +73,6 @@
 </template>
 <script>
 export default {
-
   layout(context) {
     return context.isMobile ? "h5" : "default";
   },
