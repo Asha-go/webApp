@@ -3,24 +3,15 @@
     <div class="container category-list">
       <div class="exception">
         <a-select default-value="lucy" style="width: 120px" v-model="service">
-            <a-select-option value="jack">
-              Jack
-            </a-select-option>
-            <a-select-option value="lucy">
-              Lucy
-            </a-select-option>
-            <a-select-option value="disabled" disabled>
-              Disabled
-            </a-select-option>
-            <a-select-option value="Yiminghe">
-              yiminghe
+            <a-select-option value="jack" v-for="(item, index) in serviceOptions" :key="'service' + index">
+              item
             </a-select-option>
           </a-select>
-          <a-select default-value="lucy" style="width: 120px" v-model="city">
-            <a-select-option value="lucy">
-              Lucy
-            </a-select-option>
-          </a-select>
+        <a-select default-value="lucy" style="width: 120px" v-model="city">
+          <a-select-option value="lucy" v-for="(item, index) in cityOptions" :key="'city' + index">
+            Lucy
+          </a-select-option>
+        </a-select>
       </div>
       <client-only>
         <div class="articlelist" :bordered="false">
