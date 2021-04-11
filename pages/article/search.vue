@@ -241,6 +241,10 @@ export default {
   }
   .search-type {
       margin-top: 1rem;
+      .ant-radio-wrapper {
+          color: #fff;
+          margin-left: 1rem;
+        }
    }
   @media screen and (max-width: 1024px) {
     .listcover {

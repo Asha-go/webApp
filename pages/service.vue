@@ -1,7 +1,8 @@
 <template>
   <div>
     <div class="container category-list">
-      <div class="exception">
+      <div class="exception"> </div>
+      <div class="filter">
         Services:
         <a-select  style="width: 120px" v-model="service">
             <a-select-option  v-for="(item, index) in serOptions" :key="'service' + index" :value="item">
@@ -144,7 +145,6 @@ export default {
   margin: 0 auto;
   min-height: 100vh;
   display: flex;
-  padding: 5% 0px;
   flex-direction: column;
   align-items: center;
   overflow: auto;
@@ -179,10 +179,21 @@ export default {
 .cover {
   margin-left: 10%;
 }
+.filter {
+    .ant-select {
+      margin-right: 80px;
+    }
+}
 .exception {
+  width: 100%;
+  height: 400px;
   align-items: center;
   text-align: center;
+  vertical-align: middle;
   margin-bottom: 3%;
+  background-image: url("../assets/img/service.jpg");
+  background-size: cover;
+  
   .content {
     display: inline-block;
     width: 35%;
