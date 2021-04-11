@@ -2,14 +2,16 @@
   <div>
     <div class="container category-list">
       <div class="exception">
-        <a-select default-value="lucy" style="width: 120px" v-model="service">
-            <a-select-option value="jack" v-for="(item, index) in serviceOptions" :key="'service' + index">
-              item
+        Services:
+        <a-select  style="width: 120px" v-model="service">
+            <a-select-option  v-for="(item, index) in serOptions" :key="'service' + index" :value="item">
+              {{item}}
             </a-select-option>
           </a-select>
-        <a-select default-value="lucy" style="width: 120px" v-model="city">
-          <a-select-option value="lucy" v-for="(item, index) in cityOptions" :key="'city' + index">
-            Lucy
+        City:
+        <a-select  style="width: 120px" v-model="city">
+          <a-select-option  v-for="(item, index) in cityOptions" :key="'city' + index" :value="item">
+            {{item}}
           </a-select-option>
         </a-select>
       </div>
@@ -17,10 +19,10 @@
         <div class="articlelist" :bordered="false">
               <a-list size="large" :bordered="false">
                 <a-list-item v-for="(item, index) in serData" :key="'lastest'+ index">
-                  <div class="listcover" @click="goDetail(item.blogId)">
+                  <div class="listcover" @click="goDetail(item.id)">
                     <img
                       shape="square"
-                      v-bind:src="item.img"
+                      :src="item.bigImage ||item.image "
                     >
                   </div>
                   <a-list-item-meta>
@@ -28,15 +30,19 @@
                   </a-list-item-meta>
                     <a-list itemLayout="vertical">
                       <a-list-item>
-                        <a-list-item-meta v-bind:title="item.title">
+                        <a-list-item-meta :title="item.title">
                           <div slot="description">
-                            <span class="location">
-                              <van-icon name="location-o" size="1rem" />
-                              <!-- {{item.city}} -->
+                            <span class="location icon-text">
+                              <van-icon name="location-o" size="20px" />
+                              {{item.city}}
                             </span>
-                            <span class="online">
-                              <van-icon name="tv-o" size="1rem"/>
-                              <!-- Also available online -->
+                            <span class="online icon-text" v-if="!item.isOffLineSupport">
+                              <van-icon name="tv-o" size="20px"/>
+                              Also available online
+                            </span>
+                            <span class="price icon-text" >
+                              <van-icon name="gold-coin-o" size="20px"/>
+                              {{item.price}}
                             </span>
                           </div>
                         </a-list-item-meta>
@@ -44,12 +50,12 @@
                           <div
                             class="detail"
                             max-width="9%;"
-                            style="word-break:break-all;"
-                          >{{item.content}}
+                            style="word-break:keep-all;"
+                          >{{item.detailPlaintext.substring(0, 350)}}...
                           </div>
                         </div>
                         <span slot="actions">
-                          <a-button  @click="book(item.id)">Book Now</a-button>
+                          <a-button  @click="book(item.id)" class="book">Book Now</a-button>
                         </span>
                       </a-list-item>
                     </a-list>
@@ -104,8 +110,10 @@ export default {
     return {
       loadingFlag: true,
       allData: [],
-      service: 'lucy',
-      city: 'Other'
+      service: 'All Services',
+      city: 'All',
+      serOptions : ['Business', 'Language', 'Travel', 'Daily Life', 'Other', 'All Services'],
+      cityOptions: ['Online', 'All','Beijing', 'Shanghai', 'Shenzhen', 'Other'],
     };
   },
   mounted() {
@@ -122,8 +130,11 @@ export default {
         console.log(res, 'res----getData');
       })
     },
+    goDetail(id) {
+      this.$router.push('/serDetail/' + id);
+    },
     book(id) {
-      this.$router.push('/h5/serDetail/' + id);
+      this.$router.push('/serDetail/' + id);
     },
   }
 };
@@ -172,19 +183,6 @@ export default {
   align-items: center;
   text-align: center;
   margin-bottom: 3%;
-  .img {
-    @media (max-width: 992px) {
-      width: 100%;
-      padding: 0;
-    }
-    display: inline-block;
-    padding-right: 52px;
-    zoom: 1;
-    img {
-      height: 360px;
-      max-width: 430px;
-    }
-  }
   .content {
     display: inline-block;
     width: 35%;
@@ -221,6 +219,17 @@ export default {
   @media (max-width: 992px) {
     padding: 0px;
     margin: 0px;
+  }
+  .ant-list-item-meta-title {
+    color:  #96141b;
+  }
+  .icon-text {
+    display: inline-flex;
+    align-items: center;
+    margin-right: 10px;
+  }
+  .book {
+    color:  #96141b;
   }
 }
 </style>

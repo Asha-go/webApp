@@ -239,6 +239,9 @@ export default {
   .listcover {
       padding-right: 30px;
   }
+  .search-type {
+      margin-top: 1rem;
+   }
   @media screen and (max-width: 1024px) {
     .listcover {
       padding-right: 0px;
@@ -254,7 +257,7 @@ export default {
         margin-top: 1rem;
         .ant-radio-wrapper {
           color: #fff;
-      }
+        }
       }
     }
   }
