@@ -187,7 +187,7 @@ export default {
 </script>
 <style lang="less" scoped>
 .service-detail {
-    padding: 2.5rem;
+    padding: 6.5rem;
     .title {
         font-size: 2rem;
         text-align: center;
