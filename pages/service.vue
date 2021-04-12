@@ -20,7 +20,7 @@
         <div class="articlelist" :bordered="false">
               <a-list size="large" :bordered="false">
                 <a-list-item v-for="(item, index) in serData" :key="'lastest'+ index">
-                  <div class="listcover" @click="goDetail(item.id)">
+                  <div class="listcover" @click="goDetail(item.serviceId)">
                     <img
                       shape="square"
                       :src="item.bigImage ||item.image "
@@ -193,7 +193,7 @@ export default {
   margin-bottom: 3%;
   background-image: url("../assets/img/service.jpg");
   background-size: cover;
-  
+
   .content {
     display: inline-block;
     width: 35%;
