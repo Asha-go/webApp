@@ -25,7 +25,7 @@
             <!-- <nuxt-link to="/pageb" class="menu-item">Shopping</nuxt-link> -->
             <nuxt-link to="/category/travel?category=travel" class="menu-item">Travel</nuxt-link>
             <nuxt-link to="/category/language?category=language" class="menu-item">Language</nuxt-link>
-            <nuxt-link to="/community" class="menu-item">Community</nuxt-link>
+            <!-- <nuxt-link to="/community" class="menu-item">Community</nuxt-link> -->
             <nuxt-link to="/service" class="menu-item">Service</nuxt-link>
             <a-dropdown>
               <a class="ant-dropdown-link menu-item" @click="e => e.preventDefault()">

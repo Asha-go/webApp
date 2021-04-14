@@ -169,14 +169,14 @@ export default {
 </script>
 <style lang="less" scoped>
 .service-detail {
-    padding: 1rem 20%;
+    padding: 3rem 20%;
     .title {
         font-size: 3rem;
         text-align: center;
         line-height: 3rem;
     }
     .desc {
-        padding: 1rem;
+        padding: 4rem;
         text-align: center;
         span {
             margin-left: 1rem;
@@ -211,6 +211,8 @@ export default {
     .submit-button {
         color: #fff;
         background-color:#8d040c;
+        width: 200px;
+        margin-left: 40%;
     }
 }
 </style>

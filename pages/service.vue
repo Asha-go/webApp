@@ -19,8 +19,8 @@
       <client-only>
         <div class="articlelist" :bordered="false">
               <a-list size="large" :bordered="false">
-                <a-list-item v-for="(item, index) in serData" :key="'lastest'+ index">
-                  <div class="listcover" @click="goDetail(item.serviceId)">
+                <a-list-item v-for="(item, index) in serData" :key="'lastest'+ index" @click="goDetail(item.serviceId)">
+                  <div class="listcover">
                     <img
                       shape="square"
                       :src="item.bigImage ||item.image "
