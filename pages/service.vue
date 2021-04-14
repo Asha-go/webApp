@@ -56,7 +56,7 @@
                           </div>
                         </div>
                         <span slot="actions">
-                          <a-button  @click="book(item.id)" class="book">Book Now</a-button>
+                          <a-button  @click="book(item.serviceId)" class="book">Book Now</a-button>
                         </span>
                       </a-list-item>
                     </a-list>
