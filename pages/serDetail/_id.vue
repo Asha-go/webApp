@@ -15,12 +15,10 @@
                 {{detail.price}}
             </span>
         </div>
-        <!-- <img :src="detail.image" alt=""> -->
         <div v-html="detail.desc"></div>
         <van-button round block class="submit-button" @click="showSubmit">Book Now</van-button>
         <span class="submit" @click="showSubmit">
             <icon-font type="iconorder"/>
-            <!-- <van-icon name="cart-o" size="2rem"/> -->
         </span>
         <van-dialog
           v-model="submitShow"
@@ -59,12 +57,6 @@
                     placeholder="When and where do you want this service?"
                     :rules="[{ required: true }]"
                 />
-                <!-- <van-field
-                    v-model="order.where"
-                    name="where"
-                    placeholder="Where do you want this service?"
-                    :rules="[{ required: true}]"
-                /> -->
 
                 <van-field
                     v-model="order.msg"
@@ -73,15 +65,6 @@
                     placeholder="Message for service provider:"
                     :rules="[{ required: true }]"
                 />
-
-
-                <!-- <div>
-                  <img src="/assets/img/call.jpg" alt="call">
-                  Call service provider
-                </div> -->
-                <!-- <div style="margin: 16px;">
-                    <van-button round block type="info"  class="submit-button" native-type="submit">Submit</van-button>
-                </div> -->
             </van-form>
             <van-calendar v-model="dateShow" @confirm="calendarConfirm" />
         </van-dialog>
@@ -138,7 +121,6 @@ export default {
         onSubmit(values) {
             let that = this;
             this.submitShow = false;
-            // this.msgShow = true;
             let  data = {...this.order};
             data.serviceId = this.$route.params.id;
             this.$Server({
@@ -166,18 +148,18 @@ export default {
                 params: {
                     serviceId: key
                 }}).then(res => {
-                this.loadingFlag = false;
-                let serviceDetail = res.data.serviceDetail;
-                var reg = /width=("|')([ ]*[0-9])\w+("|')\s+height=("|')([ ]*[0-9])\w+("|')/g;
-                var initHTML = serviceDetail.detailHtml;
-                this.detail.desc = initHTML.replace(
-                    reg,
-                    'width="100%" height="100%"'
-                );
-                this.detail.title = serviceDetail.title;
-                this.detail.city = serviceDetail.city;
-                this.detail.price = serviceDetail.price;
-                this.detail.isOnlineSupport = serviceDetail.isOnlineSupport;
+                  this.loadingFlag = false;
+                  let serviceDetail = res.data.serviceDetail;
+                  var reg = /width=("|')([ ]*[0-9])\w+("|')\s+height=("|')([ ]*[0-9])\w+("|')/g;
+                  var initHTML = serviceDetail.detailHtml;
+                  this.detail.desc = initHTML.replace(
+                      reg,
+                      'width="100%" height="100%"'
+                  );
+                  this.detail.title = serviceDetail.title;
+                  this.detail.city = serviceDetail.city;
+                  this.detail.price = serviceDetail.price;
+                  this.detail.isOnlineSupport = serviceDetail.isOnlineSupport;
             }).finally(() => {
                     this.loadingFlag = false;
                 });
@@ -187,11 +169,11 @@ export default {
 </script>
 <style lang="less" scoped>
 .service-detail {
-    padding: 1rem 6rem;
+    padding: 1rem 20%;
     .title {
-        font-size: 1rem;
+        font-size: 3rem;
         text-align: center;
-        line-height: 1rem;
+        line-height: 3rem;
     }
     .desc {
         padding: 1rem;
