@@ -18,7 +18,7 @@
               <nuxt-link to="/h5" class="menu-item" @click.native="menuHandler">
                 <a-icon type="home" class="icon"/> Home
               </nuxt-link>
-              <nuxt-link to="/service" class="menu-item" @click.native="menuHandler">
+              <nuxt-link to="/h5/service" class="menu-item" @click.native="menuHandler">
                 <icon-font type="iconicon_service" class="icon"/>Services
               </nuxt-link>
               <nuxt-link to="/category/daily?category=daily" class="menu-item" @click.native="menuHandler">
