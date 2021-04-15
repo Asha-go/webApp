@@ -1,5 +1,5 @@
 <template>
-    <div class="service-detail">
+    <div class="h5-service-detail">
         <h1 class="title">{{detail.title}}</h1>
         <div class="desc">
             <span>
@@ -186,8 +186,8 @@ export default {
 }
 </script>
 <style lang="less" scoped>
-.service-detail {
-    padding: 6.5rem;
+.h5-service-detail {
+    padding: 1rem 2rem ;
     .title {
         font-size: 2rem;
         text-align: center;
