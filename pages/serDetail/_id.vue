@@ -169,21 +169,21 @@ export default {
 </script>
 <style lang="less" scoped>
 .service-detail {
-    padding: 3rem 20%;
+    padding: 30px 20%;
     .title {
-        font-size: 3rem;
+        font-size: 30px;
         text-align: center;
-        line-height: 3rem;
+        line-height: 30px;
     }
     .desc {
-        padding: 4rem;
+        padding: 30px;
         text-align: center;
         span {
-            margin-left: 1rem;
+            margin-left: 15px;
             display: inline-flex;
             align-items: center;
             i {
-               margin-right: 0.5rem ;
+               margin-right: 10px;
             }
         }
     }
@@ -194,18 +194,18 @@ export default {
     }
     .submit {
             position: fixed;
-            width: 3rem;
-            height: 3rem;
-            right: 1.2rem;
+            width: 40px;
+            height: 40px;
+            right: 15px;
             top: 60vh;
-            border-radius: 1.5rem;
+            border-radius: 20px;
             background-color: #8d040c;
             color: #FFF;
             display: inline-flex;
             align-items: center;
             justify-content: center;
             i {
-               font-size: 2rem;
+               font-size: 30px;
             }
     }
     .submit-button {
