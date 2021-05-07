@@ -116,6 +116,10 @@ export default {
           travelData: {
             text: 'travel',
             title: 'Travel'
+          },
+          businessData: {
+            text: 'business',
+            title: 'Business'
           }
         },
         cityData: [
