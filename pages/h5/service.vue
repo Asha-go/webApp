@@ -58,7 +58,7 @@
               <van-icon name="location-o" size="1rem" />
               {{item.city}}
             </span>
-            <span class="online">
+            <span class="online" v-if="item.isOnlineSupport">
               <van-icon name="tv-o" size="1rem"/>
               Also available online
             </span>

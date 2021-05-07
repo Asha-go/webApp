@@ -11,7 +11,7 @@
         v-if="bannerData.length"
       >
         <swiper-slide v-for="(item, index) in bannerData" :key="'banner'+ index" >
-          <span @click="goDetail(item.blogId)">
+          <span @click="goDetail(item.blogId, item.type)">
             <img :src="item.cover" :alt="'banner'+index" >
             <div class="text">
               <p>{{item.recommendTitle}}</p>
@@ -102,6 +102,7 @@ export default {
           dailyData: [],
           foodData: [],
           travelData: [],
+          businessData:[],
         },
         categoryDesc: {
           dailyData: {
@@ -142,7 +143,7 @@ export default {
     // this.swiper.slideTo(3, 1000, false)
   },
   created() {
-    let categoryList = ['daily', 'food', 'travel']
+    let categoryList = ['daily', 'food', 'travel', 'business']
     categoryList.forEach(item => {
       this.getData(item);
     });
@@ -181,12 +182,16 @@ export default {
         query: query
       })
     },
-    goDetail(blogId) {
-      this.$router.push({
-        path: '/blog/detail',
-        query: {
-          blogId: blogId
-      }});
+    goDetail(blogId, type) {
+      if (type === 2) {
+        this.$router.push({path: '/serDetail/:blogId'});
+      } else {
+        this.$router.push({
+          path: '/blog/detail',
+          query: {
+            blogId: blogId
+        }});
+      };
     },
     logout () {
       Cookie.remove('_t');

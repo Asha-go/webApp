@@ -27,6 +27,8 @@
             <nuxt-link to="/category/language?category=language" class="menu-item">Language</nuxt-link>
             <!-- <nuxt-link to="/community" class="menu-item">Community</nuxt-link> -->
             <nuxt-link to="/service" class="menu-item">Service</nuxt-link>
+            <a href="//www.ashacorporate.com/" class="menu-item">Business</a>
+
             <a-dropdown>
               <a class="ant-dropdown-link menu-item" @click="e => e.preventDefault()">
                 About Us <a-icon type="down" />
